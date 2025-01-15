@@ -11,7 +11,7 @@ import { Revenue } from "@/types/Revenue";
 import { getRevenues } from "@/services/api";
 
 export default async function Revenues() {
-  const revenues = await getRevenues();
+  const revenues:Revenue[] = await getRevenues();
   const total = revenues
     .map((e) => e.investimento)
     .reduce((total, revenue) => {
@@ -22,10 +22,7 @@ export default async function Revenues() {
   return (
     <React.Fragment>
       <main className="">
-        <div className="mb-20 mt-4">
-          <h1 className="text-primary-600 text-4xl px-4 ">Revenues</h1>
-        </div>
-        <ul className="flex justify-center py-6  gap-5 flex-wrap ">
+        <ul className="flex justify-center py-6  mt-5 gap-5 flex-wrap ">
           {revenues.map((revenue) => (
             <li
               className="bg-background-secondary  w-3/12  p-4 rounded-md hover:bg-background-tertiary transition-all duration-300 flex flex-wrap"
@@ -89,14 +86,12 @@ export default async function Revenues() {
             </li>
           ))}
         </ul>
-        <article className="bg-background-secondary  mt-20 flex  w-full justify-end items-center relative bottom-0  ">
-          <div className="py-4  pr-4 flex items-center">
-            <h1 className="text-2xl px-4 text-center">
-              Total Investido:{" "}
-              <strong className="text-xl text-accent-green-hover">
-                R${total.toFixed(2)}
-              </strong>
-            </h1>
+        <article className="  mt-20 flex  w-full justify-center items-center absolute bottom-0  pb-4 ">
+          <div className="py-6 bg-background-secondary w-8/12 rounded-lg pr-4 flex items-center justify-between">
+            <h1 className="text-2xl px-4 text-center">Total Investido </h1>
+            <strong className="text-3xl text-accent-green-hover">
+              <p>R${total.toFixed(2)}</p>
+            </strong>
           </div>
         </article>
       </main>

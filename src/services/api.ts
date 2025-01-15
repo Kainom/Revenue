@@ -1,5 +1,6 @@
 import { Revenue } from "@/types/Revenue";
 import myAxios from "@/utils/axios";
+import slugify from "slugify";
 
 export const getRevenues = async (): Promise<Revenue[]> => {
   try {
@@ -14,4 +15,16 @@ export const getRevenues = async (): Promise<Revenue[]> => {
     throw err;
   }
 };
+
+export const getRevenue = async (slug: string): Promise<Revenue> => {
+  try {
+    const response = await myAxios.get<Revenue>(`/slug/${slug}`);
+    response.data.vencimento = new Date(response.data.vencimento);
+    return response.data;
+  } catch (err) {
+    console.error("Error fetching revenue", err);
+    throw err;
+  }
+  
+}
     

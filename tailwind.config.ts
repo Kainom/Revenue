@@ -23,6 +23,16 @@ export default {
         xl: "1rem",
         "2xl": "1.5rem",
       },
+      fontW:{
+        xl1:{
+          fontSize: "1.75rem",
+          lineHeight: "1.90rem",
+          fontWeight: "600",
+        }
+      },
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(300, 300, 300, 0.3)',
+      },
       colors: {
         foreground: {
           primary: "#E2E8F0", // Primary text
