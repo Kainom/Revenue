@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 export const CardMonth = (): ReactElement => {
   return (
     <React.Fragment>
-      <article className="border-l-4 border-primary-600 w-2/4 p-2 bg-background-secondary rounded-sm mb-10 shadow-[0_35px_60px_-15px_rgba(20,20,20,0.6)]">
+      <article className="border-l-4 border-primary-600 w-2/4  max-[835px]:min-w-96 p-2 bg-background-secondary rounded-sm mb-10 shadow-[0_35px_60px_-15px_rgba(20,20,20,0.6)]">
         <div className="flex gap-4 justify-between px-4 py-2 text-xl">
           <h2>Janeiro</h2>
           <p className="text-accent-green-hover">R$ 2900,00</p>

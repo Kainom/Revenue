@@ -57,5 +57,12 @@ export const expenses: Expense[] = [
     data: new Date("2024-02-09"),
     tipo: "Essencial",
   },
+  {
+    id: "9",
+    nome: "Coffe",
+    valor: 52.2,
+    data: new Date("2024-03-09"),
+    tipo: "Essencial",
+  },
   
 ];

@@ -3,7 +3,7 @@ import { expenses } from "../expenses";
 
 export function getExpenseMonth(): string[] {
   return expenses.reduce<string[]>((month, data) => {
-    const monthString = data.data.toLocaleString("pt-BR", { month: "long" });
+    const monthString = data.data.toLocaleString("en", { month: "long" });
     if (!month.includes(monthString)) {
       month.push(monthString);
     }
@@ -14,12 +14,16 @@ export function getExpenseMonth(): string[] {
 export function getExpenseByMonth(month: string): Expense[] {
   return expenses.filter(
     (expense) =>
-      expense.data.toLocaleString("pt-BR", { month: "long" }) === month
+      expense.data.toLocaleString("en", { month: "long" }) === month
   );
 }
 
-export function getThreeMostExpense(): Expense[] {
-  return expenses.sort((a, b) => b.valor - a.valor).slice(0, 3);
+export function getThreeMonthMostExpense(): Expense[] {
+  expenses.sort(
+    (a, b) =>
+      getExpenseByMonth(b.data.toLocaleString("en", { month: "long" })).length -
+      getExpenseByMonth(a.data.toLocaleString("en", { month: "long" })).length
+  )
 }
 
 export function getTotalByMonth(month: string): number {

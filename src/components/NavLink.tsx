@@ -50,6 +50,16 @@ export const NavLink = () => {
           >
             Calculator
           </Link>
+          <Link
+            className={`${
+              path === "/archive"
+                ? "text-primary-600"
+                : "hover:text-primary-600 transition-all duration-300"
+            }`}
+            href={"/archive"}
+          >
+            Expenses
+          </Link>
         </ul>
       </li>
     </React.Fragment>
