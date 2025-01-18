@@ -52,7 +52,7 @@ export const NavLink = () => {
           </Link>
           <Link
             className={`${
-              path === "/archive"
+              path.startsWith("/archive")
                 ? "text-primary-600"
                 : "hover:text-primary-600 transition-all duration-300"
             }`}

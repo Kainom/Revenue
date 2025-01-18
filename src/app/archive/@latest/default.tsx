@@ -1,4 +1,4 @@
-import { CardMonth } from "@/components/CardMonth";
+import { CardMonth } from "@/components/expense/CardMonth";
 import React, { ReactElement } from "react";
 
 export default function LatestRevenue(): ReactElement {

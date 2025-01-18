@@ -150,7 +150,7 @@ export default {
         "2xl": "1.5rem",
         full: "9999px",
       },
-      boxShadow: {
+      boxShadow2: {
         "sm-dark": "0 1px 2px 0 rgba(0, 0, 0, 0.35)",
         dark: "0 1px 3px 0 rgba(0, 0, 0, 0.35), 0 1px 2px -1px rgba(0, 0, 0, 0.35)",
         "md-dark":
