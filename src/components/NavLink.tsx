@@ -1,15 +1,25 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import ExpensePNG from "@/assets/expense.png"
 
 export const NavLink = () => {
   const path: string = usePathname();
 
   return (
     <React.Fragment>
-      <li className="list-none w-11/12 shadow-border-light">
-        <ul className="flex p-10 gap-10 bg-background-secondary text-foreground-primary">
+      <nav className="list-none w-11/12 shadow-border-light">
+        <div className="flex p-10 gap-10 bg-background-secondary text-foreground-primary items-center">
+        <Link
+            href={"/bag/image"}
+          >
+            <Image className="mb-3" src={ExpensePNG} width={50} alt="revenue">
+
+            </Image>
+          </Link>
+
           <Link
             className={`${
               path === "/"
@@ -60,8 +70,8 @@ export const NavLink = () => {
           >
             Expenses
           </Link>
-        </ul>
-      </li>
+        </div>
+      </nav>
     </React.Fragment>
   );
 };

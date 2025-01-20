@@ -9,9 +9,11 @@ import EditSVG from "@/assets/edit-line.svg";
 import Image from "next/image";
 import { Revenue } from "@/types/Revenue";
 import { getRevenues } from "@/services/api";
+import TreasurePNG from "@/assets/treasure.png";
+import CdbPNG from "@/assets/cdb.png";
 
 export default async function Revenues() {
-  const revenues:Revenue[] = await getRevenues();
+  const revenues: Revenue[] = await getRevenues();
   const total = revenues
     .map((e) => e.investimento)
     .reduce((total, revenue) => {
@@ -28,9 +30,20 @@ export default async function Revenues() {
               className="bg-background-secondary  w-3/12  p-4 rounded-md hover:bg-background-tertiary transition-all duration-300 flex flex-wrap"
               key={revenue.id}
             >
-              <Link href={`/bag/${revenue.slug}`}>
+              <Link className="cursor-pointer" href={`/bag/${revenue.slug}/image`}>
+                {revenue.nome.includes("CDB") ? (
+                  <Image className="mb-2" src={CdbPNG} alt="cdb icon" />
+                ) : (
+                  <Image
+                    className="mb-2"
+                    src={TreasurePNG}
+                    alt="Treasure icon"
+                  />
+                )}
+              </Link>
+              <Link className=" w-full" href={`/bag/${revenue.slug}`}>
                 <div className="">
-                  <span className="bg-red-200  ">
+                  <span className="">
                     <strong className="">
                       <p className="text-primary-600 mb-4 text-xl">
                         {revenue.nome}

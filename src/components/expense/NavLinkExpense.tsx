@@ -10,11 +10,13 @@ export const NavLinkExpense = ({
 }): ReactElement => {
   const path = usePathname();
   return (
-    <React.Fragment>
+    <React.Fragment
+    >
       {months.map((month) => (
-        <li>
+        <li
+        key={month}
+        >
           <Link
-            key={month}
             href={`/archive/${month}`}
             className={`
                             ${
