@@ -30,7 +30,7 @@ export default async function Revenues() {
               className="bg-background-secondary  w-3/12  p-4 rounded-md hover:bg-background-tertiary transition-all duration-300 flex flex-wrap"
               key={revenue.id}
             >
-              <Link className="cursor-pointer" href={`/bag/${revenue.slug}/image`}>
+              <div className="cursor-pointer">
                 {revenue.nome.includes("CDB") ? (
                   <Image className="mb-2" src={CdbPNG} alt="cdb icon" />
                 ) : (
@@ -40,7 +40,7 @@ export default async function Revenues() {
                     alt="Treasure icon"
                   />
                 )}
-              </Link>
+              </div>
               <Link className=" w-full" href={`/bag/${revenue.slug}`}>
                 <div className="">
                   <span className="">
@@ -92,10 +92,14 @@ export default async function Revenues() {
                   </span>
                 </div>
               </Link>
-              <button className="w-full gap-2 flex justify-end items-center">
-                <Image className="" src={RemoveSVG} alt="remove"></Image>
-                <Image className="" src={EditSVG} alt="edit"></Image>
-              </button>
+              <div className="w-full gap-2 flex justify-end items-center">
+                <button>
+                  <Image className="cursor pointer" src={RemoveSVG} alt="remove"></Image>
+                </button>
+                <button>
+                  <Image className="cursor pointer" src={EditSVG} alt="edit"></Image>
+                </button>
+              </div>
             </li>
           ))}
         </ul>

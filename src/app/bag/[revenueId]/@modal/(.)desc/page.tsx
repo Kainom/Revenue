@@ -14,7 +14,7 @@ export default function Description(): ReactElement {
           />
 
           {/* Overlay Content */}
-          <div className="fixed inset-4 md:inset-10 z-50">
+          <div className="fixed inset-4 px-60 py-36 z-50 ">
             <div className="bg-white dark:bg-gray-900 rounded-xl shadow-xl h-full animate-in fade-in slide-in-from-bottom-4 duration-300">
               {/* Close Button */}
               <button
@@ -23,7 +23,7 @@ export default function Description(): ReactElement {
               </button>
 
               {/* Overlay Content */}
-              <div className="p-6 overflow-y-auto max-h-full">
+              <div className="p-6 overflow-y-auto max-h-full ">
                 <h2 className="text-2xl font-bold mb-4">Título do Overlay</h2>
                 <p className="text-gray-600 dark:text-gray-300">Seu conteúdo aqui...</p>
               </div>
