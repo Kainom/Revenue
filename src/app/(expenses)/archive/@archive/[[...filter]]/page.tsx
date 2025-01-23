@@ -2,7 +2,7 @@ import React from "react";
 import {
   getExpenseByMonth,
   getExpenseMonth,
-} from "../../../../../lib/sequenceTime";
+} from "../../../../../../lib/sequenceTime";
 import { Month } from "@/components/expense/Month";
 import { Expense } from "@/types/Expense";
 import { MonthExpenseNav } from "@/components/expense/MonthExpenseNav";

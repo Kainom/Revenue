@@ -11,7 +11,7 @@ export const NavLink = () => {
   return (
     <React.Fragment>
       <nav className="list-none w-11/12 shadow-border-light">
-        <div className="flex p-10 gap-10 bg-background-secondary text-foreground-primary items-center">
+        <div className="flex p-4 gap-10 bg-background-secondary text-foreground-primary items-center">
         <Link
             href={"/bag/image"}
           >

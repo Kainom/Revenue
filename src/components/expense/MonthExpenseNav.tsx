@@ -7,8 +7,8 @@ export const MonthExpenseNav = ({
 }): ReactElement => {
   return (
     <React.Fragment>
-      <nav className="w-10/12 mx-auto mt-5 ">
-        <h2 className="text-4xl mb-6 pt-4">
+      <nav className="w-10/12 mx-auto  ">
+        <h2 className="text-4xl mb-6 pt-2 ml-3">
           Expenses {new Date().getFullYear()}
          
         </h2>
