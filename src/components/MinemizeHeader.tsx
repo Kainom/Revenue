@@ -6,6 +6,8 @@ import Image from "next/image";
 import UserSVG from "@/assets/user.svg";
 import UserBlue from "@/assets/userBlue.svg";
 import { usePathname, useRouter } from "next/navigation";
+
+
 export const MinemizeHeader = (): ReactElement => {
   const path = usePathname();
   const router = useRouter();

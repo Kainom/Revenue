@@ -1,21 +1,38 @@
 import { InputField } from "@/components/Inputs/InputField";
 import React, { ReactElement } from "react";
-
+import Pig from "@/assets/pig-money.svg";
+import Percentage from "@/assets/percentage.svg";
+import Calendar from "@/assets/calendar.svg";
+import ArrowUp from "@/assets/trending-up.svg";
+import Calc from "@/assets/calc.svg";
+import Image from "next/image";
 export default function CalcPage(): ReactElement {
   return (
     <React.Fragment>
-      <main className="bg-background-tertiary w-full items-center justify-center   flex p-2">
-        <div className="w-1/3">
-          <div className=" w-full  mb-5  p-4 pl-10">
+      <main className="bg-background-tertiary w-full p-2">
+        <article className=" w-full  mb-5  p-4 pl-10">
+          <div className="flex ">
+            <Image className="" src={Calc} alt="Calc icon"></Image>
             <h1 className="text-4xl max-[491px]:text-2xl ">
-              Calcular seus investimentos
+              Calculadora de investimentos
             </h1>
-            <p className="text-foreground-secondary text-md max-[346px]:hidden ml-1">
-              Calcule o retorno dos seus investimentos
-            </p>
           </div>
-          <div className="flex flex-col bg-background-secondary w-6/12 max-[405px]:w-11/12 rounded-md mb-5 px-4 py-3">
-            <label className=" mt-4 mb-1 text-sm ">Valor inicial</label>
+          <p className="text-foreground-secondary text-md max-[346px]:hidden ml-1">
+            Calcule o retorno dos seus investimentos
+          </p>
+        </article>
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center  p-10">
+          <article className="flex flex-col bg-background-secondary   rounded-md mb-5 px-4 py-3">
+            <label className=" mt-4 mb-1 text-sm flex items-center content-center text-center gap-2">
+              <Image
+                className="mb-2"
+                src={Pig}
+                width={16}
+                color="white"
+                alt="pig icon"
+              ></Image>
+              <span>Valor inicial (R$)</span>
+            </label>
             <InputField
               properties={{
                 type: "number",
@@ -23,8 +40,15 @@ export default function CalcPage(): ReactElement {
                 width: "w-full",
               }}
             ></InputField>
-            <label className="mt-4 mb-1 text-sm">
-              % Taxa de Juros (% ao ano):
+            <label className=" mt-4 mb-1 text-sm flex items-center content-center text-center gap-2">
+              <Image
+                className="mb-2"
+                src={Percentage}
+                width={16}
+                color="white"
+                alt="pig icon"
+              ></Image>
+              Taxa de Juros (% ao ano):
             </label>
             <InputField
               properties={{
@@ -33,7 +57,16 @@ export default function CalcPage(): ReactElement {
                 width: "w-full",
               }}
             ></InputField>
-            <label className="mt-4 mb-1 text-sm">Tempo de investimento:</label>
+            <label className=" mt-4 mb-1 text-sm flex items-center content-center text-center gap-2">
+              <Image
+                className="mb-2"
+                src={Calendar}
+                width={16}
+                color="white"
+                alt="pig icon"
+              ></Image>
+              Tempo de investimento:
+            </label>
             <InputField
               properties={{
                 type: "number",
@@ -44,21 +77,33 @@ export default function CalcPage(): ReactElement {
             <button className="bg-green-500 px-8 py-2 rounded-sm my-5 hover:bg-green-600 transition-all duration-300 place-self-center">
               Calcular
             </button>
-          </div>
-        </div>
-        <div className="w-1/3 bg-red-300">
-          <p className="text-foreground-secondary text-md max-[346px]:hidden ml-1">
-            Resultado do seu investimento
-          </p>
-          <div className="flex flex-col bg-background-primary w-6/12 max-[405px]:w-11/12 rounded-md px-4 py-3">
-            <p className="text-foreground-secondary text-sm text-center">
-              Retorno do Investimento:
-            </p>
-            <p className="text-foreground-primary text-4xl text-center">
-              R$ 123,456.78
-            </p>
-          </div>
-        </div>
+          </article>
+          <article className="bg-background-secondary p-4 rounded-md mb-5 px-4 py-3 ">
+            <h2 className="text-xl max-[346px]:hidden ml-1">
+              Resultado da Simulação
+            </h2>
+            <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
+              <p className=" text-sm ">Valor Total Final</p>
+              <p className="min-[360px]:text-3xl text-accent-green-hover ">
+                R$ 2.395,08
+              </p>
+            </div>
+            <div className="grid grid-cols-1 min-[508px]:grid-cols-2 gap-3 justify-between">
+              <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
+                <p className=" text-sm ">Total investido</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 2.200,00
+                </p>
+              </div>
+              <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
+                <p className=" text-sm ">Juros totais</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 195,08
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
       </main>
     </React.Fragment>
   );
