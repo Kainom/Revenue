@@ -15,7 +15,9 @@ export default async function RevenuePage({
 }: Slug): Promise<ReactElement> {
   const { revenueId } = await params;
   
-    const revenue: Revenue = await getRevenue(revenueId);
+    const revenue: Revenue | null  = await getRevenue(revenueId);
+
+
     if (!revenue) notFound();
     return (
       <React.Fragment>

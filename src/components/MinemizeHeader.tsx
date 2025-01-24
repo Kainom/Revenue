@@ -2,9 +2,6 @@
 import React, { ReactElement } from "react";
 import { NavLink } from "./NavLink";
 import Link from "next/link";
-import Image from "next/image";
-import UserSVG from "@/assets/user.svg";
-import UserBlue from "@/assets/userBlue.svg";
 import { usePathname, useRouter } from "next/navigation";
 
 interface PropsCustomLink {
@@ -40,7 +37,7 @@ export const MinemizeHeader: React.FC<PropsMinemize> = ({children}): ReactElemen
   const path = usePathname();
   return (
     <React.Fragment>
-      <header className="py-4 flex justify-end items-center gap-4">
+      <header className="py-4 flex justify-end items-center gap-4 border-b-2 ">
       {children}
       </header>
     </React.Fragment>

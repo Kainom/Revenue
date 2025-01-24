@@ -16,14 +16,13 @@ export const getRevenues = async (): Promise<Revenue[]> => {
   }
 };
 
-export const getRevenue = async (slug: string): Promise<Revenue> => {
+export const getRevenue = async (slug: string): Promise<Revenue | null> => {
   try {
     const response = await myAxios.get<Revenue>(`/slug/${slug}`);
     response.data.vencimento = new Date(response.data.vencimento);
     return response.data;
   } catch (err) {
-    console.error("Error fetching revenue", err);
-    throw err;
+    return null;
   }
   
 }
