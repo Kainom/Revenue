@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { MainHeader } from "@/components/MainHeader";
-import { MinemizeHeader } from "@/components/MinemizeHeader";
+import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
+import { UserSvg } from "@/components/UserSvg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,13 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div>
-          <MinemizeHeader/>
-        {children}
+          <MinemizeHeader>
+            <CustomLink href="/bag">Revenues</CustomLink>
+            <CustomLink href="/calc">Calc</CustomLink>
+            <CustomLink href="/perfil" customClass="w-20">
+              <UserSvg />
+            </CustomLink>
+          </MinemizeHeader>
+          {children}
         </div>
       </body>
     </html>

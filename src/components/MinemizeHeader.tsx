@@ -7,35 +7,41 @@ import UserSVG from "@/assets/user.svg";
 import UserBlue from "@/assets/userBlue.svg";
 import { usePathname, useRouter } from "next/navigation";
 
+interface PropsCustomLink {
+  href: string;
+  customClass?: string;
+  children?: React.ReactNode;
+}
 
-export const MinemizeHeader = (): ReactElement => {
+interface PropsMinemize {
+  children?: React.ReactNode;
+}
+
+export const CustomLink: React.FC<PropsCustomLink> = ({href,customClass,children}): ReactElement => {
   const path = usePathname();
-  const router = useRouter();
+  if (!customClass) {
+    customClass = `
+      ${
+        path === href
+          ? "text-primary-600"
+          : "hover:text-primary-600 transition-all duration-300"
+      }
+    `;
+  }
+
+  return (
+    <Link className={`${customClass}`} href={href}>
+      {children}
+    </Link>
+  );
+};
+
+export const MinemizeHeader: React.FC<PropsMinemize> = ({children}): ReactElement => {
+  const path = usePathname();
   return (
     <React.Fragment>
       <header className="py-4 flex justify-end items-center gap-4">
-        <Link
-          className={`
-                hover:text-primary-600 transition-all duration-300
-            `}
-          href={"/"}
-        >
-          Home
-        </Link>
-        <Link
-          className={`
-                 hover:text-primary-600 transition-all duration-300
-            `}
-          href={"/bag"}
-        >
-          Revenues
-        </Link>
-        <Link className="w-20" href={"/perfil"}>
-          <Image
-            src={path === "/perfil" ? UserBlue : UserSVG}
-            alt="User icon"
-          ></Image>
-        </Link>
+      {children}
       </header>
     </React.Fragment>
   );

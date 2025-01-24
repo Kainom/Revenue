@@ -6,6 +6,7 @@ import Image from "next/image";
 import UserSVG from "@/assets/user.svg";
 import UserBlue from "@/assets/userBlue.svg";
 import { usePathname } from "next/navigation";
+import { UserSvg } from "./UserSvg";
 
 export const MainHeader = (): ReactElement => {
   const path = usePathname();
@@ -13,11 +14,8 @@ export const MainHeader = (): ReactElement => {
     <React.Fragment>
       <header className=" bg-background-secondary flex items-center justify-between">
         <NavLink></NavLink>
-        <Link className="w-20" href={"/perfil"}>
-          <Image
-            src={path === "/perfil" ? UserBlue : UserSVG}
-            alt="User icon"
-          ></Image>
+        <Link className="w-12" href={"/perfil"}>
+         <UserSvg w="30" h="30"/>
         </Link>
       </header>
     </React.Fragment>
