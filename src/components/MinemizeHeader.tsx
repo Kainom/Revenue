@@ -37,7 +37,7 @@ export const MinemizeHeader: React.FC<PropsMinemize> = ({children}): ReactElemen
   const path = usePathname();
   return (
     <React.Fragment>
-      <header className="py-4 flex justify-end items-center gap-4 border-b-2 ">
+      <header className="py-4 flex justify-end items-center gap-4 bg-background-elevated ">
       {children}
       </header>
     </React.Fragment>
