@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
 import { UserSvg } from "@/components/UserSvg";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +32,19 @@ export default function RootLayout({
       >
         {" "}
         <MinemizeHeader classN="p-12">
-          <CustomLink href="/login" customClass="shadow-background-secondary shadow-sm bg-background-secondary">Login</CustomLink>
+          <CustomLink
+            href="/login"
+            customClass="shadow-background-secondary shadow-sm bg-background-secondary"
+          >
+            Login
+          </CustomLink>
           <CustomLink href="/register">Register</CustomLink>
-          <CustomLink href="/calc" customClass="">Calc</CustomLink>
+          <CustomLink href="/calc" customClass="">
+            Calc
+          </CustomLink>
         </MinemizeHeader>
         {children}
+        <Footer />
       </body>
     </html>
   );

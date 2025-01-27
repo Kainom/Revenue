@@ -2,9 +2,10 @@ import React, { ReactElement } from "react";
 
 interface Propertie {
   properties: {
-    type: string;
-    placeholder: string;
-    width?:string
+    type?: string;
+    placeholder?: string;
+    width?: string;
+    classN?: string;
   };
 }
 
@@ -18,9 +19,17 @@ function padrao({ properties }: Propertie) {
 export const InputField = ({ properties }: Propertie): ReactElement => {
   padrao({ properties });
 
+  let classCustom: string = " border-none py-1 px-4 rounded-sm ";
+
+  classCustom += ` ${properties.classN}`;
   return (
     <React.Fragment>
-      <input className={`border-none py-1 px-4 rounded-sm  ${properties.width}`}  type={properties.type} placeholder={properties.placeholder} />
+      <input
+        className={`${classCustom} ${properties.width}`}
+        type={properties.type}
+        placeholder={properties.placeholder}
+      >
+      </input>
     </React.Fragment>
   );
 };

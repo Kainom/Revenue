@@ -12,19 +12,25 @@ interface PropsCustomLink {
 
 interface PropsMinemize {
   children?: React.ReactNode;
+  classN?: string;
 }
 
-export const CustomLink: React.FC<PropsCustomLink> = ({href,customClass,children}): ReactElement => {
+export const CustomLink: React.FC<PropsCustomLink> = ({
+  href,
+  customClass,
+  children,
+}): ReactElement => {
   const path = usePathname();
-  if (!customClass) {
-    customClass = `
+  console.log(customClass);
+  customClass += ` 
       ${
         path === href
-          ? "text-primary-600"
-          : "hover:text-primary-600 transition-all duration-300"
+          ? " text-primary-600 "
+          : " hover:text-primary-600 transition-all duration-300 "
       }
     `;
-  }
+
+    console.log(customClass);
 
   return (
     <Link className={`${customClass}`} href={href}>
@@ -33,12 +39,17 @@ export const CustomLink: React.FC<PropsCustomLink> = ({href,customClass,children
   );
 };
 
-export const MinemizeHeader: React.FC<PropsMinemize> = ({children}): ReactElement => {
+export const MinemizeHeader: React.FC<PropsMinemize> = ({
+  children,classN
+}): ReactElement => {
   const path = usePathname();
+
+    classN+= " flex justify-end items-center gap-4 ";
+
   return (
     <React.Fragment>
-      <header className="py-4 flex justify-end items-center gap-4 bg-background-elevated ">
-      {children}
+      <header className={`${classN}`}>
+        {children}
       </header>
     </React.Fragment>
   );

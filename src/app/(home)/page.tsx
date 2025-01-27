@@ -1,4 +1,3 @@
-import { MainHeader } from "@/components/MainHeader";
 import Image from "next/image";
 import React, { ReactElement } from "react";
 import LupePng from "@/assets/lupe-coin.jpeg";
@@ -93,7 +92,7 @@ export default function Home(): ReactElement {
               Criar Conta Gratuita
             </a>
           </article>
-        </section>
+        </section >
         <Footer/>
       </main>
     </React.Fragment>
