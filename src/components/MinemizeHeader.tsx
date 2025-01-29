@@ -30,7 +30,7 @@ export const CustomLink: React.FC<PropsCustomLink> = ({
       }
     `;
 
-    console.log(customClass);
+  console.log(customClass);
 
   return (
     <Link className={`${customClass}`} href={href}>
@@ -40,17 +40,15 @@ export const CustomLink: React.FC<PropsCustomLink> = ({
 };
 
 export const MinemizeHeader: React.FC<PropsMinemize> = ({
-  children,classN
+  children,
+  classN,
 }): ReactElement => {
   const path = usePathname();
-
-    classN+= " flex justify-end items-center gap-4 ";
-
+  let classDefault = "flex justify-end items-center gap-4 ";
+  classDefault += classN;
   return (
     <React.Fragment>
-      <header className={`${classN}`}>
-        {children}
-      </header>
+      <header className={`${classDefault}`}>{children}</header>
     </React.Fragment>
   );
 };

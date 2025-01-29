@@ -1,0 +1,62 @@
+import { InputField } from "@/components/Inputs/InputField";
+import React, { FC, ReactElement } from "react";
+import GitHub from "@/assets/github.svg";
+import Google from "@/assets/google.svg";
+import Image from "next/image";
+import Email from "@/assets/email.svg";
+import Lock from "@/assets/lock.svg";
+import { Interface } from "readline";
+
+interface Group {
+  login: boolean;
+}
+
+export const GroupFields: FC<Group> = ({ login }): ReactElement => {
+  return (
+    <React.Fragment>
+      <form className="grid  gap-2 items-center px-2 py-4" action="#">
+        <div className="w-11/12   mx-auto">
+          <Image
+            src={Email}
+            alt="Ícone"
+            width={20} // Largura da imagem
+            height={20} // Altura da imagem
+          />
+        </div>
+        <InputField
+          properties={{
+            placeholder: "E-mail",
+            type: "email",
+            width: "w-11/12",
+            classN: "mx-auto ",
+          }}
+        ></InputField>
+        <div className="w-11/12 mt-2  mx-auto">
+          <Image
+            src={Lock}
+            alt="Ícone"
+            width={20} // Largura da imagem
+            height={20} // Altura da imagem
+          />
+        </div>
+        <InputField
+          properties={{
+            placeholder: "Password",
+            type: "password",
+            width: "w-11/12",
+            classN: "mx-auto",
+          }}
+        ></InputField>
+        {login && (
+          <p className="text-xs text-primary-600 cursor-pointer hover:text-primary-700 transition-all duration-300 w-11/12 mx-auto  text-end my-3">
+            Esqueceu sua Senha?
+          </p>
+        )}
+
+        <button className="bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-11/12 mx-auto">
+          {login ? "Entrar" : "Cadastrar"} {"->"}
+        </button>
+      </form>
+    </React.Fragment>
+  );
+};
