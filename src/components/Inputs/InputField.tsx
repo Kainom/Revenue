@@ -19,7 +19,7 @@ function padrao({ properties }: Propertie) {
 export const InputField = ({ properties }: Propertie): ReactElement => {
   padrao({ properties });
 
-  let classCustom: string = " border-none py-1 px-4 rounded-sm ";
+  let classCustom: string = " border-none py-1 px-4 rounded-sm text-black";
 
   classCustom += ` ${properties.classN}`;
   return (

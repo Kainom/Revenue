@@ -7,16 +7,16 @@ import Email from "@/assets/email.svg";
 import Lock from "@/assets/lock.svg";
 import { GroupFields } from "@/components/Inputs/GroupFIeldsCredentials";
 
-export default function Login(): ReactElement {
+export default function Register(): ReactElement {
   return (
     <React.Fragment>
-      <section className="bg-background-secondary mx-auto  w-2/5 rounded-sm p-6 mt-10">
+      <section className="bg-background-secondary mx-auto max-[900px]:w-8/12  max-[541px]:w-10/12  md:w-2/5  rounded-sm p-6 mt-10">
         <article className="flex items-center flex-col">
           <strong>
-            <h1 className="text-2xl">Bem-vindo </h1>
+            <h1 className="text-2xl">Bem-vindo de volta</h1>
           </strong>
           <p className="text-foreground-secondary">
-            Cadastre-se e  venha investir
+            Entre com suas credenciais para acessar sua conta
           </p>
         </article>
         <article className="mt-5">
@@ -32,12 +32,12 @@ export default function Login(): ReactElement {
               Ou continue com
             </p>
           </div>
-          <div className="grid grid-cols-2   items-center gap-4 mx-auto p-4 justify-items-center ">
+          <div className="grid grid-cols-2 max-[373px]:grid-cols-1 items-center gap-4 mx-auto max-[439px]:p-0 justify-items-center mt-4 ">
             <button className="border-sm  border-background-elevated py-1.5 w-10/12 rounded-md flex justify-center items-center gap-4 hover:bg-background-tertiary transition-all duration-300">
               <Image src={Google} alt="Google icon"></Image>
               Google
             </button>
-            <button className="border-sm  border-background-elevated py-1.5 w-10/12 rounded-md flex justify-center items-center gap-4 hover:bg-background-tertiary transition-all duration-300">
+            <button className={`border-sm  border-background-elevated py-1.5 w-10/12 rounded-md flex justify-center items-center gap-4 hover:bg-background-tertiary transition-all duration-300`}>
               <Image src={GitHub} alt="Google icon"></Image>
               GitHub
             </button>

@@ -9,12 +9,14 @@ import { Interface } from "readline";
 
 interface Group {
   login: boolean;
+  children?: ReactElement;
 }
 
-export const GroupFields: FC<Group> = ({ login }): ReactElement => {
+export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
   return (
     <React.Fragment>
       <form className="grid  gap-2 items-center px-2 py-4" action="#">
+        {children}
         <div className="w-11/12   mx-auto">
           <Image
             src={Email}
@@ -27,7 +29,7 @@ export const GroupFields: FC<Group> = ({ login }): ReactElement => {
           properties={{
             placeholder: "E-mail",
             type: "email",
-            width: "w-11/12",
+            width: "w-11/12 max-[333px]:w-full" ,
             classN: "mx-auto ",
           }}
         ></InputField>
@@ -43,7 +45,7 @@ export const GroupFields: FC<Group> = ({ login }): ReactElement => {
           properties={{
             placeholder: "Password",
             type: "password",
-            width: "w-11/12",
+            width: "w-11/12 max-[333px]:w-full",
             classN: "mx-auto",
           }}
         ></InputField>
@@ -53,7 +55,11 @@ export const GroupFields: FC<Group> = ({ login }): ReactElement => {
           </p>
         )}
 
-        <button className="bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-11/12 mx-auto">
+        <button
+          className={`${
+            login ? "" : " mt-10 "
+          }bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-11/12 mx-auto`}
+        >
           {login ? "Entrar" : "Cadastrar"} {"->"}
         </button>
       </form>

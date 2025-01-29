@@ -86,7 +86,7 @@ export default function Home(): ReactElement {
             </div>
 
             <a
-              href=""
+              href="/register"
               className="bg-primary-600 hover:bg-primary-700 transition-all duration-300 px-10 py-3.5 rounded-md"
             >
               Criar Conta Gratuita
