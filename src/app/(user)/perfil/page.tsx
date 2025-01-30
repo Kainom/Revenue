@@ -25,19 +25,21 @@ export default function Perfil(): ReactElement {
           </div>
           <div className="bg-background-elevated rounded-b-md pt-12 pb-4 text-start h-20">
             <span className="absolute top-28 left-44 ml-4">
-              <span className="flex gap-2 mb-1 items-center">
+              <span className="flex gap-1 mb-1 items-center">
                 <h1 className="text-xl font-semibold ">Goblin Choroso</h1>
-                <Image src={PenEdit} alt="edit icon" />
+                <span className="hover:bg-background-elevated px-1.5 py-1 rounded-sm cursor-pointer transition-all duration-300">
+                  <Image src={PenEdit} alt="edit icon" />
+                </span>
               </span>
               <p className="text-base">Desenvolvedor Full Stack</p>
               <span className="flex items-center gap-2 absolute  w-full mt-1">
                 <Image src={Work} alt="Enterprise icon" />
-                <p className="text-sm">Sem Empresa</p>
+                <p className="text-sm">Perfil Moderado</p>
               </span>
             </span>
           </div>
         </article>
-        <article className="w-8/12 p-4 relative  grid md:grid-cols-2  grid-cols-1 gap-6">
+        <article className="w-8/12 p-4 relative  grid md:grid-cols-2  grid-cols-1 gap-6 ">
           <div className="bg-background-secondary p-6 rounded-md pb-20">
             <h1 className="text-lg mb-3">
               <strong>Informações Pessoais </strong>
@@ -89,6 +91,19 @@ export default function Perfil(): ReactElement {
             </span>
           </div>
           <div></div>
+        </article>
+        <article className=" w-8/12 p-4 relative  gap-6">
+          <div className="bg-background-elevated rounded-md p-6">
+            <h1 className="text-primary-600 mb-2 text-lg">
+              <strong>Sobre</strong>
+            </h1>
+            <p>
+              Investidor há 3 anos, focado em construir um patrimônio sólido
+              através de uma estratégia diversificada. Busco equilibrar
+              investimentos em renda fixa e variável, sempre priorizando o longo
+              prazo e a consistência.
+            </p>
+          </div>
         </article>
       </section>
     </React.Fragment>
