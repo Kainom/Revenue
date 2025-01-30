@@ -44,7 +44,7 @@ export const MinemizeHeader: React.FC<PropsMinemize> = ({
   classN,
 }): ReactElement => {
   const path = usePathname();
-  let classDefault = "flex justify-end items-center gap-4 ";
+  let classDefault = "flex  justify-end items-center gap-4 ";
   classDefault += classN;
   return (
     <React.Fragment>

@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div>
-          <MinemizeHeader>
+          <MinemizeHeader classN="py-10 gap-8">
             <CustomLink href="/bag">Revenues</CustomLink>
             <CustomLink href="/calc">Calc</CustomLink>
             <CustomLink href="/perfil" customClass="w-20">
