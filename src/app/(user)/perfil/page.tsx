@@ -4,8 +4,37 @@ import Goblin from "@/assets/goblin.png";
 import Email from "@/assets/email.svg";
 import Local from "@/assets/local.svg";
 import Cel from "@/assets/phone.svg";
-import Work from "@/assets/work.svg";
+import Balanced from "@/assets/balanced.svg";
+import Conserved from "@/assets/conserved.svg";
 import PenEdit from "@/assets/pen-edit.svg";
+import Work from "@/assets/work.svg";
+
+export  function MoneyProgress({ current, goal }: { current: number; goal: number }) {
+  // Calcula a porcentagem (limitada a 100%)
+  const percentage = Math.min((current / goal) * 100, 100);
+
+  return (
+    <div className="w-full max-w-lg p-2  rounded-lg">
+      <div className="flex justify-between mb-2 text-xs text-foreground-secondary font-semibold mb-1">
+        <span>Aponsetadoria</span>
+        <span>{percentage.toFixed(1)}%</span>
+
+      </div>
+      <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+        <div
+          className="h-full bg-green-500 transition-all duration-300"
+          style={{ width: `${percentage}%` }}
+        />
+      </div>
+      <div className="flex justify-between text-xs text-foreground-secondary mt-2">
+      <span>Atual: R$ {current.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span>
+      <span>Meta: R$ {goal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span>
+      </div>
+      
+    </div>
+  );
+}
+
 
 export default function Perfil(): ReactElement {
   return (
@@ -33,17 +62,29 @@ export default function Perfil(): ReactElement {
               </span>
               <p className="text-base">Desenvolvedor Full Stack</p>
               <span className="flex items-center gap-2 absolute  w-full mt-1">
-                <Image src={Work} alt="Enterprise icon" />
+                <Image src={Balanced} alt="Enterprise icon" />
                 <p className="text-sm">Perfil Moderado</p>
               </span>
             </span>
           </div>
         </article>
         <article className="w-8/12 p-4 relative  grid md:grid-cols-2  grid-cols-1 gap-6 ">
-          <div className="bg-background-secondary p-6 rounded-md pb-20">
+          <div className="bg-background-secondary p-6 rounded-md">
             <h1 className="text-lg mb-3">
               <strong>Informações Pessoais </strong>
             </h1>
+            <label className="text-sm text-foreground-secondary">
+              Profissão
+            </label>
+            <span className="flex gap-2 items-center mt-1 mb-4">
+              <Image src={Local} width={16} color="" alt="location icon" />
+              <p className="text-base">Estudante</p>
+            </span>
+            <label className="text-sm text-foreground-secondary">Empresa</label>
+            <span className="flex gap-2 items-center mt-1 mb-4">
+              <Image src={Work} width={16} color="" alt="location icon" />
+              <p className="text-base">UEPG</p>
+            </span>
             <label className="text-sm text-foreground-secondary">Email</label>
             <span className="flex gap-2 items-center mt-1 mb-4">
               <Image src={Email} width={16} color="" alt="email icon" />
@@ -56,13 +97,6 @@ export default function Perfil(): ReactElement {
             <span className="flex gap-2 items-center mt-1 mb-4  ">
               <Image src={Cel} width={16} color="" alt="phone icon" />
               <p className="text-base">+55 11 9999-9999</p>
-            </span>
-            <label className="text-sm text-foreground-secondary">
-              Localização
-            </label>
-            <span className="flex gap-2 items-center mt-1">
-              <Image src={Local} width={16} color="" alt="location icon" />
-              <p className="text-base">São Paulo,SP</p>
             </span>
           </div>
           <div className="bg-background-secondary p-6 rounded-md pb-20">
@@ -90,7 +124,12 @@ export default function Perfil(): ReactElement {
               <p className="text-base">São Paulo,SP</p>
             </span>
           </div>
-          <div></div>
+          <div className="bg-background-secondary p-6 rounded-md pb-20">
+            <h1 className="text-lg mb-3">
+              <strong>Objetivos financeiros</strong>
+              <MoneyProgress current={10000} goal={15000} />
+            </h1>
+          </div>
         </article>
         <article className=" w-8/12 p-4 relative  gap-6">
           <div className="bg-background-elevated rounded-md p-6">
