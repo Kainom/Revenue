@@ -4,7 +4,7 @@ import slugify from "slugify";
 
 export const getRevenues = async (): Promise<Revenue[]> => {
   try {
-    const response = await myAxios.get<Revenue[]>("/");
+    const response = await myAxios.get<Revenue[]>("/revenues/");
     response.data.map((e) => {
         e.vencimento = new Date(e.vencimento);
     });
@@ -18,7 +18,7 @@ export const getRevenues = async (): Promise<Revenue[]> => {
 
 export const getRevenue = async (slug: string): Promise<Revenue | null> => {
   try {
-    const response = await myAxios.get<Revenue>(`/slug/${slug}`);
+    const response = await myAxios.get<Revenue>(`/revenues/slug/${slug}`);
     response.data.vencimento = new Date(response.data.vencimento);
     return response.data;
   } catch (err) {

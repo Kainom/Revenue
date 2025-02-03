@@ -22,7 +22,16 @@ export default async function RevenuePage({
     return (
       <React.Fragment>
         <main className="flex flex-col gap-10 z-0">
-          <div className="flex justify-center items-center">
+          
+          <h1 className="text-primary-600 text-4xl">{revenue.nome}</h1>
+          <p>Investimento: ${revenue.investimento}</p>
+          <p>Rendimento: {revenue.rendimento}%</p>
+          <p>Vencimento: {revenue.vencimento.toLocaleDateString()}</p>
+        </main>
+      </React.Fragment>
+    );
+}
+{/* <div className="flex justify-center items-center">
             <Link
               className="cursor-pointer"  
               href={`/bag/${revenue.slug}/desc`}
@@ -33,12 +42,4 @@ export default async function RevenuePage({
                 <Image className="mb-2" src={TreasurePNG} alt="Treasure icon" />
               )}
             </Link>
-          </div>
-          <h1 className="text-primary-600 text-4xl">{revenue.nome}</h1>
-          <p>Investimento: ${revenue.investimento}</p>
-          <p>Rendimento: {revenue.rendimento}%</p>
-          <p>Vencimento: {revenue.vencimento.toLocaleDateString()}</p>
-        </main>
-      </React.Fragment>
-    );
-}
+          </div> */}
