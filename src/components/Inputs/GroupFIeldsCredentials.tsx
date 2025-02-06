@@ -17,7 +17,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
     <React.Fragment>
       <form className="grid  gap-2 items-center px-2 py-4" action="#">
         {children}
-        <div className="w-11/12   mx-auto">
+        <div className="w-full  mx-auto">
           <Image
             src={Email}
             alt="Ícone"
@@ -29,11 +29,11 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
           properties={{
             placeholder: "E-mail",
             type: "email",
-            width: "w-11/12 max-[333px]:w-full" ,
+            width: "w-full" ,
             classN: "mx-auto ",
           }}
         ></InputField>
-        <div className="w-11/12 mt-2  mx-auto">
+        <div className="w-full mt-4  mx-auto">
           <Image
             src={Lock}
             alt="Ícone"
@@ -45,12 +45,12 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
           properties={{
             placeholder: "Password",
             type: "password",
-            width: "w-11/12 max-[333px]:w-full",
+            width: "w-full max-[333px]:w-full",
             classN: "mx-auto",
           }}
         ></InputField>
         {login && (
-          <p className="text-xs text-primary-600 cursor-pointer hover:text-primary-700 transition-all duration-300 w-11/12 mx-auto  text-end my-3">
+          <p className="text-xs text-primary-600 cursor-pointer hover:text-primary-700 transition-all duration-300 w-full mx-auto  text-end my-3">
             Esqueceu sua Senha?
           </p>
         )}
@@ -58,7 +58,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
         <button
           className={`${
             login ? "" : " mt-10 "
-          }bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-11/12 mx-auto`}
+          }bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-full mx-auto`}
         >
           {login ? "Entrar" : "Cadastrar"} {"->"}
         </button>
