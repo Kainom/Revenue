@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { Children, ReactElement, ReactElement, ReactNode } from "react";
 
 interface Propertie {
   properties: {
@@ -16,7 +16,7 @@ function padrao({ properties }: Propertie) {
 
   if (!properties.width) properties.width = "w-3/4";
 }
-export const InputField = ({ properties }: Propertie): ReactElement => {
+export const InputField = ({ properties}: Propertie): ReactElement => {
   padrao({ properties });
 
   let classCustom: string = " border-none py-1 px-4 rounded-sm text-black";
@@ -24,7 +24,7 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
   classCustom += ` ${properties.classN}`;
   return (
     <React.Fragment>
-      <input
+        <input
         className={`${classCustom} ${properties.width}`}
         type={properties.type}
         placeholder={properties.placeholder}
