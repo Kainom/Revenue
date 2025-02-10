@@ -12,7 +12,7 @@ export const MainHeader = (): ReactElement => {
   const path = usePathname();
   return (
     <React.Fragment>
-      <header className=" bg-background-secondary flex items-center justify-between">
+      <header className="border-b-sm border-zinc-700 flex items-center justify-between">
         <NavLink></NavLink>
         <Link className="w-12" href={"/perfil"}>
          <UserSvg w="30" h="30"/>

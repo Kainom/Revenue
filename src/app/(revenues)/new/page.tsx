@@ -5,12 +5,10 @@ export default function NewRevenue(): ReactElement {
   return (
     <React.Fragment>
       <main className="mt-10  flex justify-center p-4">
-        <section className="grid grid-cols-1 bg-background-secondary w-2/4 p-4 rounded-md shadow-md">
-          <strong>
+        <section className="grid grid-cols-1 border-sm border-border-dark  w-2/4 p-4 rounded-md shadow-md">
             <h1 className="text-3xl text-primary-600 place-self-center my-4">
               New Revenue
             </h1>
-          </strong>
           <article className="">
             <form action="#" className="grid grid-cols-1 gap-3  p-2">
               <div className="flex flex-col gap-1">
@@ -25,7 +23,9 @@ export default function NewRevenue(): ReactElement {
                 ></InputField>
               </div>
               <div className="flex flex-col gap-1">
-                <label className=" place-self-center w-11/12   ">Investimento</label>
+                <label className=" place-self-center w-11/12   ">
+                  Investimento
+                </label>
                 <InputField
                   properties={{
                     placeholder: "Investimento",
@@ -36,7 +36,9 @@ export default function NewRevenue(): ReactElement {
                 ></InputField>
               </div>
               <div className="flex flex-col gap-1">
-                <label className=" place-self-center w-11/12   ">Rendimento</label>
+                <label className=" place-self-center w-11/12   ">
+                  Rendimento
+                </label>
                 <InputField
                   properties={{
                     placeholder: "Rendimento",
@@ -46,20 +48,44 @@ export default function NewRevenue(): ReactElement {
                   }}
                 ></InputField>
               </div>
-              <div className="flex flex-col gap-1">
-                <label className=" place-self-center w-11/12   ">Data de Criação
-                </label>
-                <InputField
-                  properties={{
-                    placeholder: "Data de Criação",
-                    type: "date",
-                    width: "w-11/12",
-                    classN: "place-self-center py-1.5",
-                  }}
-                ></InputField>
+              <div className="bg-slate-600 flex justify-between">
+                <div className="flex flex-col gap-1 bg-black">
+                  <label className=" place-self-center ">
+                    Data de Criação
+                  </label>
+                  <label htmlFor="creation">de</label>
+                  <InputField
+                  
+                    properties={{
+                      type: "date",
+                      id:"creation"
+                    }}
+                  ></InputField>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className=" place-self-center   ">
+                    Data de Vencimento
+                  </label>
+                  <InputField
+                    properties={{
+                      type: "date",
+                    }}
+                  ></InputField>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className=" place-self-center    ">
+                    Data de Vencimento
+                  </label>
+                  <InputField
+                    properties={{
+                      type: "date",
+                    }}
+                  ></InputField>
+                </div>
               </div>
               <div className="flex flex-col gap-1">
-                <label className=" place-self-center w-11/12   ">Instituição
+                <label className=" place-self-center w-11/12   ">
+                  Instituição
                 </label>
                 <InputField
                   properties={{

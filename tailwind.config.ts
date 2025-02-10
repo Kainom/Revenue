@@ -35,14 +35,14 @@ export default {
       },
       colors: {
         foreground: {
-          primary: "#E2E8F0", // Primary text
-          secondary: "#94A3B8", // Secondary text
+          primary: "rgb(244 244 245)", // Primary text
+          secondary: "rgb(161 161 170)", // Secondary text
           tertiary: "#64748B", // Muted text
           accent: "#38BDF8", // Accent text
         },
         background: {
-          primary: "#030711", // Deepest background
-          secondary: "#0F1629", // Slightly lighter background
+          primary: "#0F0F12", // Deepest background
+          secondary: "#1F1F23", // Slightly lighter background
           tertiary: "#1A2036", // Surface color
           elevated: "#252D4A", // Elevated surface color
         },
@@ -57,8 +57,8 @@ export default {
             hover: '#A78BFA',
             muted: '#5B21B6',
           },
-          green: {
-            DEFAULT: '#10B981',
+          success: {
+            emerald: 'emerald-600',
             hover: '#34D399',
             muted: '#065F46',
           },
@@ -71,9 +71,9 @@ export default {
 
         // Border specific colors
         border: {
-          light: "rgba(0, 0, 0, 0.1)",
-          DEFAULT: "rgba(0, 0, 0, 0.15)",
-          dark: "rgba(0, 0, 0, 0.2)",
+          light:"#374151",
+          lightest:"#6B7280",
+          dark: "#1F2937",
           accent: {
             green: "#22c55e",
             blue: "#0ea5e9",

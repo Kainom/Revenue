@@ -11,7 +11,7 @@ import { GroupFields } from "@/components/Inputs/GroupFIeldsCredentials";
 export default function Register(): ReactElement {
   return (
     <React.Fragment>
-      <section className="bg-background-secondary mx-auto max-[900px]:w-10/12  max-[1040px]:w-2/3  w-2/5  rounded-sm p-6 mt-10">
+      <section className="bg-background-secondary mx-auto max-[900px]:w-10/12  max-[1040px]:w-2/3  w-2/5  rounded-sm p-6 mt-10 border-sm border-zinc-800">
         <article className="flex items-center flex-col">
           <strong>
             <h1 className="text-2xl">Bem-vindo </h1>
@@ -36,7 +36,7 @@ export default function Register(): ReactElement {
                   placeholder: "Your name",
                   type: "text",
                   width: "w-full max-[333px]:w-full",
-                  classN: "mx-auto mb-4",
+                  classN: "mx-auto mb-4 border-border-lightest",
                 }}
               ></InputField>
                <div className="w-full    mx-auto">
@@ -52,7 +52,7 @@ export default function Register(): ReactElement {
                   placeholder: "Your phone",
                   type: "tel",
                   width: "w-full max-[333px]:w-full",
-                  classN: "mx-auto mb-4",
+                  classN: "mx-auto mb-4 border-border-lightest",
                 }}
               ></InputField>
             </React.Fragment>

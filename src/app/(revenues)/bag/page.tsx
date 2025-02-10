@@ -27,10 +27,10 @@ export default async function Revenues() {
         <ul className="flex justify-center py-6  mt-5 gap-5 flex-wrap ">
           {revenues.map((revenue) => (
             <li
-              className="bg-background-secondary  w-3/12  p-4 rounded-md hover:bg-background-tertiary transition-all duration-300 flex flex-wrap"
+              className="w-3/12  p-4 rounded-md hover:bg-background-tertiary transition-all duration-300 flex flex-wrap border-sm border-zinc-700 shadow-sm hover:shadow"
               key={revenue.id}
             >
-              <div className="cursor-pointer">
+              {/* <div className="cursor-pointer">
                 {revenue.nome.includes("CDB") ? (
                   <Image className="mb-2" src={CdbPNG} alt="cdb icon" />
                 ) : (
@@ -40,18 +40,18 @@ export default async function Revenues() {
                     alt="Treasure icon"
                   />
                 )}
-              </div>
+              </div> */}
               <Link className=" w-full" href={`/bag/${revenue.slug}`}>
                 <div className="">
                   <span className="">
                     <strong className="">
-                      <p className="text-primary-600 mb-4 text-xl">
+                      <p className=" mb-4 text-xl ">
                         {revenue.nome}
                       </p>
                     </strong>
                   </span>
 
-                  <span className="flex gap-4 text-center items-center text-2xl">
+                  <span className="flex gap-4 text-center items-center text-xl  text-zinc-300">
                     <Image
                       className="bg-accent-green-hover rounded-full p-1"
                       src={Money}
@@ -61,7 +61,7 @@ export default async function Revenues() {
                       <p>${revenue.investimento}</p>
                     </strong>
                   </span>
-                  <span className="flex gap-4 text-center items-center text-2xl my-4">
+                  <span className="flex gap-4 text-center items-center text-base my-4 text-zinc-300">
                     <Image
                       className="bg-accent-green-hover rounded-full p-1"
                       src={RevenueSVG}
@@ -76,11 +76,11 @@ export default async function Revenues() {
                   </span>
                   <span className="flex gap-4 text-center items-center  mt-2">
                     <Image
-                      className="bg-primary-200 rounded-full p-1"
+                      className="p-1"
                       src={Timer}
                       alt="money"
                     />
-                    <strong className="flex gap-2 text-sm">
+                    <strong className="flex gap-2 text-sm text-zinc-300">
                       <p>
                         {revenue.vencimento.toLocaleString("default", {
                           month: "long",
@@ -92,21 +92,22 @@ export default async function Revenues() {
                   </span>
                 </div>
               </Link>
-              <div className="w-full gap-2 flex justify-end items-center">
-                <button>
+              <div className="w-full gap-4 flex justify-end items-center border-t-sm border-zinc-700 mt-4 pt-4">
+                <button className="">
                   <Image className="cursor pointer" src={RemoveSVG} alt="remove"></Image>
                 </button>
-                <button>
+                <button className="" >
                   <Image className="cursor pointer" src={EditSVG} alt="edit"></Image>
                 </button>
               </div>
+             
             </li>
           ))}
         </ul>
-        <article className="  mt-20 flex  w-full justify-center items-center absolute bottom-0  pb-4 ">
-          <div className="py-6 bg-background-secondary w-8/12 rounded-lg pr-4 flex items-center justify-between">
-            <h1 className="text-2xl px-4 text-center">Total Investido </h1>
-            <strong className="text-3xl text-accent-green-hover">
+        <article className="  mt-10 flex  w-full justify-center items-center absolute bottom-0  pb-4  ">
+          <div className="py-4  w-8/12 rounded-lg pr-4 flex items-center justify-between border-sm border-zinc-700">
+            <h1 className="text-xl px-4 text-center">Total Investido </h1>
+            <strong className="text-xl text-accent-green-hover">
               <p>R${total.toFixed(2)}</p>
             </strong>
           </div>

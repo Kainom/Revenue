@@ -19,7 +19,7 @@ export function getExpenseByMonth(month: string): Expense[] {
 }
 
 export function getThreeMonthMostExpense(): Expense[] {
-  expenses.sort(
+  return expenses.sort(
     (a, b) =>
       getExpenseByMonth(b.data.toLocaleString("en", { month: "long" })).length -
       getExpenseByMonth(a.data.toLocaleString("en", { month: "long" })).length

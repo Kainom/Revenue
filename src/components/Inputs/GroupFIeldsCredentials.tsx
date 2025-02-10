@@ -15,7 +15,7 @@ interface Group {
 export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
   return (
     <React.Fragment>
-      <form className="grid  gap-2 items-center px-2 py-4" action="#">
+      <form className="grid  gap-2 items-center px-2 py-4 " action="#">
         {children}
         <div className="w-full  mx-auto">
           <Image
@@ -30,7 +30,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
             placeholder: "E-mail",
             type: "email",
             width: "w-full" ,
-            classN: "mx-auto ",
+            classN: "mx-auto border-border-lightest",
           }}
         ></InputField>
         <div className="w-full mt-4  mx-auto">
@@ -46,7 +46,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
             placeholder: "Password",
             type: "password",
             width: "w-full max-[333px]:w-full",
-            classN: "mx-auto",
+            classN: "mx-auto border-border-lightest",
           }}
         ></InputField>
         {login && (

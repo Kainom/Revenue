@@ -10,7 +10,7 @@ import CoinLupe from "@/assets/lupe-coin.jpeg";
 export default function Login(): ReactElement {
   return (
     <React.Fragment>
-      <section className="bg-background-secondary    max-[900px]:w-8/12  max-[541px]:w-10/12  md:w-[26rem]   rounded-sm p-4 py-6 mx-auto ">
+      <section className="bg-background-secondary    max-[900px]:w-8/12  max-[541px]:w-10/12  md:w-[26rem]   rounded-sm p-4 py-6 mx-auto border-sm border-zinc-800 shadow-sm">
         <article className="flex items-center flex-col">
           <strong>
             <h1 className="text-2xl">Bem-vindo de volta</h1>

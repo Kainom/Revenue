@@ -13,7 +13,7 @@ export const NavLinkExpense = ({
     <React.Fragment
     >
       {months.map((month) => (
-        <li
+        <li 
         key={month}
         >
           <Link
@@ -21,13 +21,13 @@ export const NavLinkExpense = ({
             className={`
                             ${
                               path.endsWith(month)
-                                ? "text-primary-600"
+                                ? "bg-background-secondary py-3 px-8   rounded-md transition-all"
                                 : "hover:text-primary-600"
                             }
                             transition-all duration-300
                             `}
           >
-            {month.toUpperCase()}
+            {month}
           </Link>
         </li>
       ))}
