@@ -17,7 +17,7 @@ export const CategoryExpense = (): ReactElement => {
           </div>
           <div>
             <select
-              className="mb-4 text-sm py-2 w-24 bg-background-primary text-white border-2 border-border-dark border-double rounded-md outline-none focus:ring-2 focus:ring-zinc-500"
+              className="mb-4 text-[0.70rem] py-2 w-24 bg-background-primary text-white border-2 border-border-dark border-double rounded-md outline-none focus:ring-2 focus:ring-zinc-500 "
               value={category}
               onChange={(e) =>
                 setCategory(
@@ -45,7 +45,7 @@ export const CategoryExpense = (): ReactElement => {
           </span>
           <span className="flex gap-4 items-center mt-2">
             <p className="text-xs text-zinc-400 ">Mar 1</p>
-            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg ">
+            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg hover:bg-zinc-700 transition-all duration-300">
               Utilities
             </p>
           </span>
@@ -57,7 +57,7 @@ export const CategoryExpense = (): ReactElement => {
           </span>
           <span className="flex gap-4 items-center mt-2">
             <p className="text-xs text-zinc-400 ">Mar 5</p>
-            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg ">
+            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg hover:bg-zinc-700 transition-all duration-300">
               Health
             </p>
           </span>
@@ -69,7 +69,7 @@ export const CategoryExpense = (): ReactElement => {
           </span>
           <span className="flex gap-4 items-center mt-2">
             <p className="text-xs text-zinc-400 ">Mar 10</p>
-            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg ">
+            <p className="text-xs text-zinc-50 bg-zinc-800 px-3 py-0.5 rounded-lg hover:bg-zinc-700 transition-all duration-300">
               Education
             </p>
           </span>
