@@ -35,7 +35,7 @@ export default {
       },
       colors: {
         foreground: {
-          primary: "rgb(244 244 245)", // Primary text
+          primary: "#FAFAFA", // Primary text
           secondary: "#9CA3AF", // Secondary text
           tertiary: "#64748B", // Muted text
           accent: "#38BDF8", // Accent text

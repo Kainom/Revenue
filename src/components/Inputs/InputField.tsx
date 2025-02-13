@@ -26,17 +26,19 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
   padrao({ properties });
 
   let classCustom: string =
-    "border-sm border-border-dark py-1 px-4 rounded-sm text-zinc-50 bg-background-secondary";
-  let customLabel: string = "mb-2";
+    "border-sm border-border-dark py-1 px-4 rounded-sm text-zinc-50 bg-background-secondary outline-none mt-2";
+  let customLabel: string = "mb-4";
 
-  if (properties.label && properties.label.classN)
+  if (properties.label)
     customLabel += ` ${properties.label.classN}`;
 
   classCustom += ` ${properties.classN}`;
   return (
-    <React.Fragment>
+    <div className="flex flex-col">
       {properties.label && (
-        <label className={`${properties.label.classN}  ${properties.label.width}`}>
+        <label
+          className={`${properties.label.classN}  ${properties.label.width}`}
+        >
           {properties.label.text}
         </label>
       )}
@@ -46,6 +48,6 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
         placeholder={properties.placeholder}
         id={properties.id}
       ></input>
-    </React.Fragment>
+    </div>
   );
 };
