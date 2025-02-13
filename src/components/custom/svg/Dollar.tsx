@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-type PropsUser = {
+type Props = {
   w?: string;
   h?: string;
   className?: string;
@@ -13,13 +13,7 @@ export const Dollar = ({
   className,
   fill,
   stroke,
-}: PropsUser): ReactElement => {
-  if (!w || w === "") {
-    w = "24";
-  }
-  if (!h || h === "") {
-    h = "24";
-  }
+}: Props): ReactElement => {
 
   if (!stroke) {
     stroke = "#FAFAFA";
