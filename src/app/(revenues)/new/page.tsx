@@ -5,7 +5,7 @@
   export default function NewRevenue(): ReactElement {
     return (
       <React.Fragment>
-        <main className="mt-10  flex justify-center p-4">
+        <main className=" flex justify-center p-4">
           <section className="grid grid-cols-1 border-sm border-border-dark  w-3/4 p-4 rounded-md shadow-md">
             <div className="ml-2 mb-5">
               <h2 className="text-3xl mt-4">New Revenue</h2>

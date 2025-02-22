@@ -6,7 +6,7 @@ import React, { ReactElement } from "react";
 export default function NewExpense(): ReactElement {
   return (
     <React.Fragment>
-      <main className="mt-10 flex justify-center  p-4">
+      <main className="mt-10 flex justify-center  p-4 w-full">
         <section className="bg-background-secondary w-2/5 p-6 rounded-sm">
           <article>
             <strong>
