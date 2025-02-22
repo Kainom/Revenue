@@ -75,7 +75,6 @@ export const CategoryExpense = (): ReactElement => {
           </span>
         </div>
       </article>
-      ;
     </React.Fragment>
   );
 };

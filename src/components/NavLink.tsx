@@ -12,12 +12,11 @@ export const NavLink = () => {
     <React.Fragment>
       <nav className="list-none w-11/12 shadow-border-light">
         <div className="flex p-4 gap-10  text-foreground-primary items-center max-[500px]:hidden">
-
           <Link
             className={`${
               path === "/"
                 ? "text-primary-600"
-                : "hover:text-primary-600 transition-all duration-300"
+                : "hover:bg-foreground-secondary  transition-all duration-300"
             }`}
             href={"/"}
           >
@@ -27,7 +26,7 @@ export const NavLink = () => {
             className={`${
               path === "/bag"
                 ? "text-primary-600"
-                : "hover:text-primary-600 transition-all duration-300"
+                : "hover:bg-foreground-secondary  transition-all duration-300"
             }`}
             href={"/bag"}
           >
@@ -37,7 +36,7 @@ export const NavLink = () => {
             className={`${
               path === "/new"
                 ? "text-primary-600"
-                : "hover:text-primary-600 transition-all duration-300"
+                : "hover:bg-foreground-secondary transition-all duration-300"
             }`}
             href={"/new"}
           >
@@ -47,7 +46,7 @@ export const NavLink = () => {
             className={`${
               path === "/calc"
                 ? "text-primary-600"
-                : "hover:text-primary-600 transition-all duration-300"
+                : "hover:bg-background-secondary transition-all duration-300"
             }`}
             href={"/calc"}
           >
@@ -57,16 +56,14 @@ export const NavLink = () => {
             className={`${
               path.startsWith("/archive")
                 ? "text-primary-600"
-                : "hover:text-primary-600 transition-all duration-300"
+                : "hover:bg-foreground-secondary transition-all duration-300"
             }`}
             href={"/archive"}
           >
             Expenses
           </Link>
         </div>
-        <div className="min-[500px]:hidden text-2xl">
-          !!!
-        </div>
+        <div className="min-[500px]:hidden text-2xl">!!!</div>
       </nav>
     </React.Fragment>
   );

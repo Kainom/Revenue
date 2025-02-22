@@ -21,12 +21,11 @@ export const CustomLink: React.FC<PropsCustomLink> = ({
   children,
 }): ReactElement => {
   const path = usePathname();
-  console.log(customClass);
   customClass += ` 
       ${
         path === href
-          ? " text-primary-600 "
-          : " hover:text-primary-600 transition-all duration-300 "
+          ? "bg-foreground-secondary "
+          : "hover:bg-foreground-secondary transition-all duration-300 py-4 flex justify-center"
       }
     `;
 

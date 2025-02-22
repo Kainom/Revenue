@@ -1,0 +1,56 @@
+"use client"
+import React, { useState } from 'react';
+import { Home, Wallet } from 'lucide-react';
+
+export const  SideBar = () => {
+  const [hovered, setHovered] = useState(false);
+  const [subMenuOpen, setSubMenuOpen] = useState(null);
+
+  const handleMouseEnter = () => setHovered(true);
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setSubMenuOpen(null);
+  };
+
+  const toggleSubMenu = (menu) => {
+    setSubMenuOpen(subMenuOpen === menu ? null : menu);
+  };
+
+  return (
+    <div 
+      className={`relative h-screen transition-all duration-300 bg-background-secondary ${hovered ? 'w-64' : 'w-16'}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <ul className="text-white space-y-2 p-2">
+        {/* Home Item */}
+        <li className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 cursor-pointer">
+          <Home className="text-xl" />
+          {hovered && <span className="text-sm">Home</span>}
+        </li>
+
+        {/* Expenses Item */}
+        <li 
+          className="flex flex-col"
+        >
+          <div 
+            className="flex items-center space-x-2 p-2 rounded hover:bg-gray-700 cursor-pointer"
+            onClick={() => toggleSubMenu('expenses')}
+          >
+            <Wallet className="text-xl" />
+            {hovered && <span className="text-sm">Expenses</span>}
+          </div>
+
+          {/* Submenu - Aparece apenas se o submenu estiver aberto */}
+          {subMenuOpen === 'expenses' && (
+            <ul className={`pl-8 transition-all duration-300 ${hovered ? 'bg-blue-600' : ''}`}>
+              <li className="p-1 hover:bg-blue-700 rounded cursor-pointer">New Expense</li>
+              <li className="p-1 hover:bg-blue-700 rounded cursor-pointer">My Expenses</li>
+            </ul>
+          )}
+        </li>
+      </ul>
+    </div>
+  );
+};
+

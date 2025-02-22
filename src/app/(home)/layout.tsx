@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
-import { UserSvg } from "@/components/UserSvg";
+
+import {SideBar}  from "@/components/SideBar";
+import { Home, Settings, User } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {" "}
-        <MinemizeHeader classN="p-12">
-          <CustomLink href="/login" customClass="shadow-background-secondary shadow-sm bg-background-secondary">Login</CustomLink>
-          <CustomLink href="/register">Register</CustomLink>
-          <CustomLink href="/calc" customClass="">Calc</CustomLink>
-        </MinemizeHeader>
+        <SideBar/>
         {children}
       </body>
     </html>

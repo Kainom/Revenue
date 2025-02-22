@@ -10,7 +10,7 @@ export default function ArchiveLayout({
   archive: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="w-full">
       <section>{archive}</section>
       <section>{latest}</section>
     </div>
