@@ -4,6 +4,7 @@ import "../globals.css";
 import { MainHeader } from "@/components/MainHeader";
 import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
 import { UserSvg } from "@/components/UserSvg";
+import { SideBar } from "@/components/SideBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,13 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div>
-          <MinemizeHeader classN="py-10 gap-8">
-            <CustomLink href="/bag">Revenues</CustomLink>
-            <CustomLink href="/calc">Calc</CustomLink>
-            <CustomLink href="/perfil" customClass="w-20">
-              <UserSvg />
-            </CustomLink>
-          </MinemizeHeader>
+         <SideBar/>
           {children}
         </div>
       </body>

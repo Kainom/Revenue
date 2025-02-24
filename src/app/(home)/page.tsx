@@ -5,6 +5,7 @@ import Calc from "@/assets/calc.svg";
 import Book from "@/assets/book.svg";
 import Chart from "@/assets/chart.svg";
 import { Footer } from "@/components/Footer";
+import Link from "next/link";
 export default function Home(): ReactElement {
   return (
     <React.Fragment>
@@ -19,21 +20,23 @@ export default function Home(): ReactElement {
                 Acompanhe seus investimentos, analise e controle seu gastos.
               </p>
               <div className="flex gap-4 flex-wrap">
-                <button
+                <Link
+                  href="/register"
                   className="py-2.5 px-6 bg-primary-600 transition-all duration-300 hover:bg-primary-700 rounded-md 
               max-[375px]:w-full
               
               "
                 >
                   Start Now {">"}{" "}
-                </button>
-                <button
+                </Link>
+                <Link
+                  href="/register"
                   className="py-2.5 px-3  bg-background-primary shadow-sm shadow-background-secondary transition-all duration-300 hover:bg-foreground-tertiary rounded-md 
                  max-[375px]:w-full
               "
                 >
                   Saiba Mais {">"}{" "}
-                </button>
+                </Link>
               </div>
             </div>
           </article>
@@ -53,7 +56,7 @@ export default function Home(): ReactElement {
             <p>Ferramentas e recursos para otimizar seus investimentos</p>
           </article>
           <article className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 ">
-            <div className="bg-background-tertiary rounded-md p-6">
+            <div className="bg-background-tertiary rounded-md p-6 ">
               <Image src={Chart} width={50} alt="calc" className="mb-2"></Image>
               <h3 className="text-xl text-primary-600">Análise de Carteira</h3>
               Visualize a distribuição dos seus investimentos e analise a
@@ -73,15 +76,18 @@ export default function Home(): ReactElement {
             </div>
           </article>
         </section>
-        <section className="bg-background-elevated p-10">
+        <section className="bg-background-primary p-10">
           <article className="flex items-center justify-center flex-col mb-6">
             <div className="mb-8 mt-5">
               <h2 className="text-center text-3xl font-bold mb-4 max-[374px]:hidden">
                 Comece sua jornada de investimentos hoje
               </h2>
               <p>
-              Junte-se a milhares de investidores que já estão transformando sua vida financeira 
-                <span className="block text-primary-600  text-center">nossa plataforma.</span>
+                Junte-se a milhares de investidores que já estão transformando
+                sua vida financeira
+                <span className="block text-primary-600  text-center">
+                  nossa plataforma.
+                </span>
               </p>
             </div>
 
@@ -92,8 +98,8 @@ export default function Home(): ReactElement {
               Criar Conta Gratuita
             </a>
           </article>
-        </section >
-        <Footer/>
+        </section>
+        <Footer />
       </main>
     </React.Fragment>
   );

@@ -24,8 +24,8 @@ export const CustomLink: React.FC<PropsCustomLink> = ({
   customClass += ` 
       ${
         path === href
-          ? "bg-foreground-secondary "
-          : "hover:bg-foreground-secondary transition-all duration-300 py-4 flex justify-center"
+          ? "bg-background-secondary px-6  py-2  rounded"
+          : "hover:bg-background-secondary transition-all duration-300 py-2 px-4 rounded flex justify-center"
       }
     `;
 

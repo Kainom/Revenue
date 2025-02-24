@@ -4,6 +4,7 @@ import "../globals.css";
 
 import {SideBar}  from "@/components/SideBar";
 import { Home, Settings, User } from "lucide-react";
+import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SideBar/>
+        <MinemizeHeader classN="px-12 py-4 pt-10 ">
+          <CustomLink
+            href="/login"
+            customClass="shadow-sm "
+          >
+            Login
+          </CustomLink>
+          <CustomLink
+            href="/register"
+            customClass="shadow-sm "
+          >
+            Register
+          </CustomLink>
+          <CustomLink
+            href="/calc"
+            customClass="shadow-sm "
+          >
+            Calc
+          </CustomLink>
+        </MinemizeHeader>
         {children}
       </body>
     </html>

@@ -15,9 +15,9 @@ import { ExpensesDivision, MoneyProgress } from "@/components/MoneyProgress";
 export default function Perfil(): ReactElement {
   return (
     <React.Fragment>
-      <section className="bg-background-tertiary flex flex-col items-center mt-0 p-3  pt-10">
+      <section className="flex flex-col items-center mt-0 p-3  pt-10">
         <article className="w-8/12 p-4 relative ">
-          <div className="bg-background-secondary rounded-t-md h-32 flex items-center relative px-4">
+          <div className="border-sm border-border-dark rounded-t-md h-32 flex items-center relative px-4">
             <div className="absolute -bottom-12 left-4  border-4 border-white rounded-full overflow-hidden">
               <Image
                 src={Goblin}
@@ -28,7 +28,7 @@ export default function Perfil(): ReactElement {
               />
             </div>
           </div>
-          <div className="bg-background-elevated rounded-b-md pt-12 pb-4 text-start h-20">
+          <div className="bg-background-secondary rounded-b-md pt-12 pb-4 text-start h-20">
             <span className="absolute top-28 left-44 ml-4">
               <span className="flex gap-1 mb-1 items-center">
                 <h1 className="text-xl font-semibold ">Goblin Choroso</h1>
@@ -45,7 +45,7 @@ export default function Perfil(): ReactElement {
           </div>
         </article>
         <article className="w-8/12 p-4 relative  grid md:grid-cols-2  grid-cols-1 gap-6 ">
-          <div className="bg-background-secondary p-6 rounded-md">
+          <div className="border-border-dark border-sm p-6 rounded-md">
             <h1 className="text-lg mb-3">
               <strong>Informações Pessoais </strong>
             </h1>
@@ -62,7 +62,7 @@ export default function Perfil(): ReactElement {
               <p className="text-base">UEPG</p>
             </span>
           </div>
-          <div className="bg-background-secondary p-6 rounded-md pb-20">
+          <div className="border-border-dark border-sm p-6 rounded-md pb-20">
             <h1 className="text-lg mb-3">
               <strong>Informações Financeiras </strong>
             </h1>
@@ -91,7 +91,7 @@ export default function Perfil(): ReactElement {
           </div>
         </article>
         <article className="w-8/12 p-4 relative  grid md:grid-cols-2  grid-cols-1 gap-6 ">
-          <div className="bg-background-secondary p-4 px-6 rounded-md pb-20">
+          <div className="border-border-dark border-sm p-4 px-6 rounded-md pb-20">
             <h1 className="text-lg mb-3"></h1>
             <strong>Objetivos financeiros</strong>
             <MoneyProgress
@@ -107,7 +107,7 @@ export default function Perfil(): ReactElement {
               meta={true}
             />
           </div>
-          <div className="bg-background-secondary p-4 px-6 rounded-md pb-20">
+          <div className="border-border-dark border-sm p-4 px-6 rounded-md pb-20">
             <h1 className="text-lg mb-3"></h1>
             <strong>Carteira de Investimentos</strong>
             <MoneyProgress current={250} goal={522} title="CDB" meta={true} />
@@ -120,7 +120,7 @@ export default function Perfil(): ReactElement {
           </div>
         </article>
         <article className="w-8/12 p-4  relative grid  grid-cols-1 gap-6 ">
-          <div className="bg-background-secondary p-4 px-6 rounded-md pb-10">
+          <div className="border-border-dark border-sm p-4 px-6 rounded-md pb-10">
             <h1 className="text-lg mb-3"></h1>
             <strong>Distribuiçao do Gastos</strong>
             <ExpensesDivision value={350} total={522} title="Essenciais" />
@@ -128,8 +128,8 @@ export default function Perfil(): ReactElement {
             <ExpensesDivision value={350} total={522} title="Investimentos" />
           </div>
         </article>
-        <article className=" w-8/12 p-4 relative  gap-6">
-          <div className="bg-background-elevated rounded-md p-6">
+        <article className="w-8/12 p-4 relative  gap-6">
+          <div className="bg-background-secondary rounded-md p-6">
             <h1 className="text-primary-600 mb-2 text-lg">
               <strong>Sobre</strong>
             </h1>

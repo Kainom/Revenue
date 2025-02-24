@@ -30,11 +30,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MinemizeHeader classN="p-12 border-b-sm border-zinc-700 gap-8">
-          <CustomLink
-            href="/login"
-            customClass="shadow-background-secondary shadow-sm"
-          >
+        <MinemizeHeader classN="px-12 pb-4 pt-12 gap-8">
+          <CustomLink href="/login" customClass="">
             Login
           </CustomLink>
           <CustomLink href="/register">Register</CustomLink>
@@ -42,9 +39,7 @@ export default function RootLayout({
             Calc
           </CustomLink>
         </MinemizeHeader>
-        <main className="my-12">
-        {children}
-        </main>
+        <main className="mb-12">{children}</main>
         <Footer />
       </body>
     </html>
