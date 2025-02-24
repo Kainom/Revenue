@@ -9,8 +9,8 @@ import Image from "next/image";
 export default function CalcPage(): ReactElement {
   return (
     <React.Fragment>
-      <main className="bg-background-tertiary w-full p-2">
-        <article className=" w-full  mb-5  p-4 pl-10">
+      <main className="flex ml-16  flex-col">
+        <article className=" mb-5  p-4 pl-10">
           <div className="flex ">
             <Image className="" src={Calc} alt="Calc icon"></Image>
             <h1 className="text-4xl max-[491px]:text-2xl ">
@@ -22,7 +22,7 @@ export default function CalcPage(): ReactElement {
           </p>
         </article>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center  p-10">
-          <article className="flex flex-col bg-background-secondary   rounded-md mb-5 px-4 py-3">
+          <article className="flex flex-col border-border-dark border-sm  rounded-md mb-5 px-4 py-3">
             <label className=" mt-4 mb-1 text-sm flex items-center content-center text-center gap-2">
               <Image
                 className="mb-2"
@@ -57,6 +57,23 @@ export default function CalcPage(): ReactElement {
                 width: "w-full",
               }}
             ></InputField>
+            <label className="mt-4 mb-1 text-sm flex items-center content-center text-center gap-2 content-center">
+              <Image
+                className="mb-2"
+                src={Percentage}
+                width={16}
+                color="white"
+                alt="pig icon"
+              ></Image>
+              Inflação (% ao ano):
+            </label>
+            <InputField
+              properties={{
+                type: "number",
+                placeholder: "Inflação",
+                width: "w-full",
+              }}
+            ></InputField>
             <label className=" mt-4 mb-1 text-sm flex items-center content-center text-center gap-2">
               <Image
                 className="mb-2"
@@ -74,34 +91,70 @@ export default function CalcPage(): ReactElement {
                 width: "w-full",
               }}
             ></InputField>
-            <button className="bg-green-500 px-8 py-2 rounded-sm my-5 hover:bg-green-600 transition-all duration-300 place-self-center">
+            <button className="bg-green-500 px-8 py-2 rounded-sm mb-5 mt-20 hover:bg-green-600 transition-all duration-300 place-self-center ">
               Calcular
             </button>
           </article>
-          <article className="bg-background-secondary p-4 rounded-md mb-5 px-4 py-3 ">
-            <h2 className="text-xl max-[346px]:hidden ml-1">
+          <article className="border-border-dark border-sm p-4 rounded-md mb-5 px-4 py-3 ">
+            <h2 className="text-xl max-[346px]:hidden ml-1 mt-5 mb-8">
               Resultado da Simulação
             </h2>
-            <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
-              <p className=" text-sm ">Valor Total Final</p>
-              <p className="min-[360px]:text-3xl text-accent-green-hover ">
-                R$ 2.395,08
-              </p>
+
+            <div className="grid grid-cols-1 min-[508px]:grid-cols-2 gap-3 justify-between">
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Desconto da Inflação</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 40,00
+                </p>
+              </div>
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Desconto do Imposto de renda</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 15,00
+                </p>
+              </div>
             </div>
             <div className="grid grid-cols-1 min-[508px]:grid-cols-2 gap-3 justify-between">
-              <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
-                <p className=" text-sm ">Total investido</p>
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Saque possível</p>
                 <p className="min-[360px]:text-xl text-accent-green-hover ">
-                  R$ 2.200,00
+                  R$ 45,00
                 </p>
               </div>
-              <div className="mt-5 bg-background-elevated rounded-md px-5 py-3">
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
                 <p className=" text-sm ">Juros totais</p>
                 <p className="min-[360px]:text-xl text-accent-green-hover ">
-                  R$ 195,08
+                  R$ 100,00
                 </p>
               </div>
             </div>
+
+            <div className="grid grid-cols-1 min-[508px]:grid-cols-3 gap-3 justify-between">
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Inicial</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 1.000,00
+                </p>
+              </div>
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Valor Final Bruto </p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 1.100,00
+                </p>
+              </div>
+              <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Valor final liquído</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 1.060,00
+                </p>
+              </div>
+            </div>
+             <div className="mt-5 bg-background-secondary rounded-md px-5 py-3">
+                <p className=" text-sm ">Valor conservado pela inflação</p>
+                <p className="min-[360px]:text-xl text-accent-green-hover ">
+                  R$ 1.040,00
+                </p>
+              </div>
           </article>
         </section>
       </main>

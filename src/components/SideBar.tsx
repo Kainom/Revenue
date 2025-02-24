@@ -1,15 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { Home, PiggyBank, Plus, User, Wallet } from "lucide-react";
+import { Calculator, Home, PiggyBank, Plus, User, Wallet } from "lucide-react";
 import { Menu } from "@/types/Menu";
 import Link from "next/link";
 
 const routes: Menu[] = [
-  {
-    name: "Home",
-    icon: <Home />,
-    rota: "/",
-  },
   {
     name: "Expenses",
     icon: <Wallet />,
@@ -45,7 +40,12 @@ const routes: Menu[] = [
   {
     name: "Perfil",
     icon: <User />,
-    rota:"perfil"
+    rota: "perfil",
+  },
+  {
+    name: "Calc",
+    icon: <Calculator />,
+    rota: "/calc",
   },
 ];
 
