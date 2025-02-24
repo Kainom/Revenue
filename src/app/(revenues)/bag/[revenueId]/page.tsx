@@ -46,11 +46,11 @@ export default async function RevenuePage({
 
   return (
     <React.Fragment>
-      <main className="  justify-center z-0 mt-10 p-5">
-        <h1 className="font-bold text-2xl  mx-auto w-2/3 mb-4">
+      <main className="justify-center z-0 p-5">
+        <h1 className="font-bold text-2xl mt-10 mx-auto w-2/3 mb-4">
           Detalhes do Investimentos
         </h1>
-        <section className="border-border-dark border-sm  w-2/3 p-6 mx-auto rounded-sm">
+        <section className="border-border-dark border-sm  w-2/3 p-6 mx-auto rounded-sm mb-10">
           <article className="flex gap-2 items-center mb-10">
             <Tag w="22" h="22" />
             <h2 className="text-xl font-bold">Tesouro Selic 2029</h2>

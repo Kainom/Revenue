@@ -13,7 +13,7 @@ export const MonthExpenseNav = ({
           <h2 className="text-4xl">Expenses {new Date().getFullYear()}</h2>
           <Link
             className="text-background-primary bg-zinc-50 px-6 py-2 text-sm rounded-sm hover:bg-zinc-200 transition-all duration-300"
-            href={"/newExpense"}
+            href={"/new-expense"}
           >
             Add New Expense
           </Link>

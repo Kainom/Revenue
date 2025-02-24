@@ -9,7 +9,7 @@ export default function BagLayout({
 }>) {
   return (
     <React.Fragment>
-      <main>{children}</main>
+      {children}
       {modal}
     </React.Fragment>
   );
