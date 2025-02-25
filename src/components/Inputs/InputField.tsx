@@ -7,6 +7,7 @@ interface Propertie {
     width?: string;
     classN?: string;
     id?: string;
+    name?: string;
     label?: {
       text: string;
       classN?: string;
@@ -47,6 +48,8 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
         type={properties.type}
         placeholder={properties.placeholder}
         id={properties.id}
+        name={properties.name}
+        required
       ></input>
     </div>
   );

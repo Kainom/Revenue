@@ -30,6 +30,7 @@ export const InputDate = (): ReactElement => {
       <input
         type="date"
         value={data}
+        name="dataCriacao"
         onChange={handleChange}
         className="border-sm border-border-light mb-4     px-4 rounded-sm text-zinc-50 bg-background-secondary focus:ring-2 focus:ring-zinc-700 w-full py-1.5 hover:bg-zinc-700 transition-all duration-300"
         min={minData} // Impede meses anteriores

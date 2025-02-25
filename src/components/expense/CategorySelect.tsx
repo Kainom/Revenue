@@ -1,7 +1,11 @@
 "use client";
 import React, { ReactElement } from "react";
 
-export const CategorySelect = (): ReactElement => {
+export const CategorySelect = ({
+  post = false,
+}: {
+  post?: boolean;
+}): ReactElement => {
   return (
     <React.Fragment>
       <select
@@ -9,11 +13,12 @@ export const CategorySelect = (): ReactElement => {
         name="category"
         id="categoryId"
       >
-        <option value="0">Select a category</option>
-        <option value="1">All</option>
-        <option value="2">Essencial</option>
-        <option value="3">Not Essencial</option>
-        <option value="4">Luxury</option>
+        <option value="Essential">Essential</option>
+        <option hidden={post} value="All">
+          All
+        </option>
+        <option value="Not Essential">Not Essential</option>
+        <option value="Luxury">Luxury</option>
       </select>
     </React.Fragment>
   );
