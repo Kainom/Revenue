@@ -1,9 +1,9 @@
-"use server"
+"use server";
 import { Expense, ExpenseTotalMonth } from "@/types/Expense";
-import myAxios from "@/utils/axios";
+import myAxios from "../../lib/axios";
 import slugify from "slugify";
 
-export const allExpensesByYear = async (id:string): Promise<Expense[]> => {
+export const allExpensesByYear = async (id: string): Promise<Expense[]> => {
   try {
     const response = await myAxios.get<Expense[]>(`/expenses/${id}`);
     console.log(response.data);
@@ -14,12 +14,49 @@ export const allExpensesByYear = async (id:string): Promise<Expense[]> => {
   }
 };
 
+export const getAllTotalExpensesByYear = async (
+  year: number
+): Promise<ExpenseTotalMonth[]> => {
+  try {
+    const response = await myAxios.get<ExpenseTotalMonth[]>(
+      `/expenses/total-year/${year}`
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.error("Error fetching revenues", err);
+    throw err;
+  }
+};
+
+export const getTotalExpenseByYearAndMonth = async (id:string):Promise<ExpenseTotalMonth> => {
+  try {
+    const response = await myAxios.get<ExpenseTotalMonth>(`/expenses/total/${id}`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export const getThreeMonthMostExpensive = async (
+  year: number
+): Promise<ExpenseTotalMonth[]> => {
+  try {
+    const response = await myAxios.get<ExpenseTotalMonth[]>(
+      `/expenses/total-three/${year}`
+    );
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const getExpense = async (slug: string): Promise<Expense> => {
   try {
     const response = await myAxios.get<Expense>(`/expenses/slug/${slug}`);
     return response.data;
   } catch (err) {
-      throw err;
+    throw err;
   }
 };
 
@@ -27,30 +64,18 @@ type Message = {
   isValid: boolean;
   message: string;
   error: {
-    message: string ;
-    status:  null;
-  } ;
+    message: string;
+    status: null;
+  };
 };
 
 
-export const getAllTotalExpensesByYear = async (): Promise<ExpenseTotalMonth[]> => { 
-  return new Promise((resolve, reject) => {
-    const year:number = new Date().getFullYear();
-    return myAxios.get<ExpenseTotalMonth[]>(`/expenses/total-month/${year}`)
-      .then((response) => {
-        console.log(response.data)
-        return resolve(response.data);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-}
 
-
-export const storeExpense = async (prevSate:Message,form: FormData): Promise<Message> => {
+export const storeExpense = async (
+  prevSate: Message,
+  form: FormData
+): Promise<Message> => {
   try {
-
     const expense: Expense = {
       nome: form.get("nome") as string,
       value: parseFloat(form.get("value") as string),
@@ -61,11 +86,13 @@ export const storeExpense = async (prevSate:Message,form: FormData): Promise<Mes
     };
     const response = await myAxios.post<Expense>("/expenses/", expense);
     new Promise((resolve) => setTimeout(resolve, 1000));
-  
-    console.log(response.data);
-    return { isValid: true, message: "Expense stored successfully!" ,error:{message:"",status:null}};
-    
 
+    console.log(response.data);
+    return {
+      isValid: true,
+      message: "Expense stored successfully!",
+      error: { message: "", status: null },
+    };
   } catch (err) {
     prevSate.isValid = false;
     prevSate.message = "";
@@ -73,5 +100,3 @@ export const storeExpense = async (prevSate:Message,form: FormData): Promise<Mes
     return prevSate;
   }
 };
-
-

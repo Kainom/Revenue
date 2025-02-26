@@ -84,6 +84,7 @@ export const SideBar = () => {
     >
       <ul className="text-white space-y-2 p-2">
         {routes.map((route) => (
+          
           <li
             key={route.name}
             className={`relative`}

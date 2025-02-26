@@ -1,21 +1,29 @@
 "use client";
+import { getAllTotalExpensesByYear } from "@/services/expense";
+import { ExpenseTotalMonth } from "@/types/Expense";
+import { getExpenseMonth } from "@/utils/sequenceTime";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 
-export const NavLinkExpense = ({
-  months,
-}: {
-  months: string[];
-}): ReactElement => {
+export const NavLinkExpense = (): ReactElement => {
   const path = usePathname();
-  return (
-    <React.Fragment
-    >
+  const [months, setMonth] = React.useState<string[]>([]);
+
+  useEffect(() => {
+     async function getMonths(): Promise<string[]> {
+      const currentYear: number = new Date().getFullYear();
+      const expenses: ExpenseTotalMonth[] = await getAllTotalExpensesByYear(
+        currentYear
+      );
+      return getExpenseMonth(expenses);
+     }
+    getMonths().then((months)=>{return setMonth(months)}).then(()=>{console.log(months)})
+  },[])
+  return (  
+    <React.Fragment>
       {months.map((month) => (
-        <li 
-        key={month}
-        >
+        <li key={month}>
           <Link
             href={`/archive/${month}`}
             className={`

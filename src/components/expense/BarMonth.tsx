@@ -2,7 +2,7 @@
 
 import { getAllTotalExpensesByYear } from "@/services/expense";
 import { ExpenseTotalMonth, Gasto } from "@/types/Expense";
-import { changeToMonth } from "@/utils/ChangeToMonth";
+import { ordene } from "@/utils/MonthLogics";
 import { useEffect, useState } from "react";
 import {
   BarChart,
@@ -14,19 +14,19 @@ import {
   Cell,
 } from "recharts";
 
-
-
 export default function BarCharMonth() {
   const [gastos, setGastos] = useState<Gasto[]>([]);
   const [topGastos, setTopGastos] = useState<string[]>([]);
 
   useEffect(() => {
     async function getAll() {
-      const months: ExpenseTotalMonth[] = await getAllTotalExpensesByYear();
-      const gastos: Gasto[] = changeToMonth(months);
+      const months: ExpenseTotalMonth[] = await getAllTotalExpensesByYear(
+        new Date().getFullYear()
+      );
+      const gastos: Gasto[] = ordene(months);
       setGastos(gastos);
       console.log(gastos);
-      
+
       const gasto: string[] = [...gastos]
         .sort((a, b) => b.total - a.total)
         .slice(0, 3)
@@ -36,13 +36,11 @@ export default function BarCharMonth() {
     getAll();
 
     // Cleanup function
-    
+
     return () => {
       setGastos([]);
       setTopGastos([]);
     };
-
-
   }, []);
 
   return (

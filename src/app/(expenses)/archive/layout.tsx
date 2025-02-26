@@ -1,3 +1,4 @@
+import { MonthExpenseNav } from "@/components/expense/MonthExpenseNav";
 
 
 
@@ -11,6 +12,7 @@ export default function ArchiveLayout({
 }>) {
   return (
     <div className="w-full">
+      <MonthExpenseNav  />
       <section>{archive}</section>
       <section>{latest}</section>
     </div>

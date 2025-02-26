@@ -1,6 +1,5 @@
 import { ExpenseTotalMonth, Gasto } from "@/types/Expense";
 
-
 const data: Gasto[] = [
   { mes: "Jan", total: 0 },
   { mes: "Fev", total: 0 },
@@ -15,7 +14,7 @@ const data: Gasto[] = [
   { mes: "Nov", total: 0 },
   { mes: "Dez", total: 0 },
 ];
-export const changeToMonth = (expenses: ExpenseTotalMonth[]): Gasto[] => {
+export const ordene = (expenses: ExpenseTotalMonth[]): Gasto[] => {
   const expensesOrdenados = expenses.sort((a, b) => a.id.localeCompare(b.id));
   return data.map((expense, index) => ({
     ...expense,

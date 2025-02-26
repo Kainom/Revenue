@@ -1,35 +1,29 @@
 import React from "react";
-import {
-  getExpenseByMonth,
-  getExpenseMonth,
-} from "../../../../../../lib/sequenceTime";
-import { Month } from "@/components/expense/Month";
-import { Expense } from "@/types/Expense";
-import { MonthExpenseNav } from "@/components/expense/MonthExpenseNav";
-import { notFound } from "next/navigation";
+import { TotalExpenseMonth } from "@/components/expense/TotalExpenseMonth";
+import { ThreeExpensiveMonth } from "@/components/expense/ThreeExpensiveMonth";
 
 type Month = {
   params: Promise<{ filter: string }>;
 };
 
-export default async function MonthExpense({ params }: Month)  {
+export default async function MonthExpense({ params }: Month) {
   let { filter } = await params;
-  const months: string[] = getExpenseMonth();
-  console.log(filter);
-    const current: string = new Date().toLocaleString("en", {
-      month: "long",
-    });
 
-  const expenses: Expense[] = getExpenseByMonth(filter?.[0] || current);
-  if (!expenses.length) {
-    notFound();
+  const current: string = new Date().toLocaleString("en", {
+    month: "long",
+  });
+
+  if (!filter) {
+    filter = current;
   }
 
   return (
     <React.Fragment>
-      <MonthExpenseNav months={months} />
-      <main>
-        <Month expense={expenses} filter={filter?.[0] || current} />
+      <main className="">
+        <article className=" mt-7  grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  gap-8  justify-between w-10/12  mx-auto">
+          <TotalExpenseMonth filter={filter} />
+          <ThreeExpensiveMonth />
+        </article>
       </main>
     </React.Fragment>
   );

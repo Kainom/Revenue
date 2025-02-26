@@ -1,11 +1,16 @@
 import React, { ReactElement } from "react";
 import { NavLinkExpense } from "./NavLinkExpense";
 import Link from "next/link";
-export const MonthExpenseNav = ({
-  months,
-}: {
-  months: string[];
-}): ReactElement => {
+import { ExpenseTotalMonth } from "@/types/Expense";
+import { getExpenseMonth } from "@/utils/sequenceTime";
+import { getAllTotalExpensesByYear } from "@/services/expense";
+
+
+
+
+export const MonthExpenseNav = (): ReactElement => {
+ 
+
   return (
     <React.Fragment>
       <nav className="w-10/12 mx-auto  ">
@@ -19,7 +24,7 @@ export const MonthExpenseNav = ({
           </Link>
         </div>
         <ul className="flex flex-wrap  gap-8 p-6 rounded-sm border-sm border-border-dark">
-          <NavLinkExpense months={months} />
+          <NavLinkExpense  />
         </ul>
       </nav>
     </React.Fragment>
