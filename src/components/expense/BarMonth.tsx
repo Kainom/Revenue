@@ -3,6 +3,7 @@
 import { getAllTotalExpensesByYear } from "@/services/expense";
 import { ExpenseTotalMonth, Gasto } from "@/types/Expense";
 import { ordene } from "@/utils/MonthLogics";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   BarChart,

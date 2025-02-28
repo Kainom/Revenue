@@ -3,7 +3,7 @@ export interface Expense {
   nome: string;
   value: number;
   category: string;
-  dataCriacao: Date | string;
+  dataCriacao: Date ;
   description: string;
   slug: string;
 }

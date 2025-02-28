@@ -1,41 +1,40 @@
 "use client";
-import { getAllTotalExpensesByYear } from "@/services/expense";
-import { ExpenseTotalMonth } from "@/types/Expense";
-import { getExpenseMonth } from "@/utils/sequenceTime";
+import { Month } from "@/types/Month";
+import {
+  getPossibleMonths,
+} from "@/utils/GetPossibleMonths";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { ReactElement, useEffect } from "react";
+import React, { ReactElement, useEffect} from "react";
+
+const currentMonth: number = new Date().getMonth() + 1;
 
 export const NavLinkExpense = (): ReactElement => {
   const path = usePathname();
-  const [months, setMonth] = React.useState<string[]>([]);
+  const [months, setMonths] = React.useState<Month[]>([]);
 
+ 
   useEffect(() => {
-     async function getMonths(): Promise<string[]> {
-      const currentYear: number = new Date().getFullYear();
-      const expenses: ExpenseTotalMonth[] = await getAllTotalExpensesByYear(
-        currentYear
-      );
-      return getExpenseMonth(expenses);
-     }
-    getMonths().then((months)=>{return setMonth(months)}).then(()=>{console.log(months)})
-  },[])
-  return (  
+    const possibleMonths: Month[] = getPossibleMonths(currentMonth);
+    setMonths(possibleMonths);
+},[])
+
+  return (
     <React.Fragment>
       {months.map((month) => (
-        <li key={month}>
+        <li key={month.number}>
           <Link
-            href={`/archive/${month}`}
+            href={`/archive/${month.name}`}
             className={`
                             ${
-                              path.endsWith(month)
+                              path.endsWith(month.name)
                                 ? "bg-background-secondary py-3 px-8   rounded-md transition-all"
                                 : "hover:text-primary-600"
                             }
                             transition-all duration-300
                             `}
           >
-            {month}
+            {month.name}
           </Link>
         </li>
       ))}

@@ -1,17 +1,14 @@
-import { getAllTotalExpensesByYear, getThreeMonthMostExpensive } from "@/services/expense";
+import { getThreeMonthMostExpensive } from "@/services/expense";
 import { ExpenseTotalMonth } from "@/types/Expense";
 import { getNamedMonthOfDate } from "@/utils/sequenceTime";
 import { ArrowUp } from "lucide-react";
-import Image from "next/image";
 import React, { ReactElement } from "react";
 
- 
+const currentYear: number = new Date().getFullYear();
 
 export const ThreeExpensiveMonth = async (): Promise<ReactElement> => {
-  const currentYear: number = new Date().getFullYear();
-  const threeMostExpensive: ExpenseTotalMonth[] = await getThreeMonthMostExpensive(currentYear);
-    
-            
+  const threeMostExpensive: ExpenseTotalMonth[] =
+    await getThreeMonthMostExpensive(currentYear);
 
   return (
     <React.Fragment>

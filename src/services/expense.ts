@@ -14,6 +14,24 @@ export const allExpensesByYear = async (id: string): Promise<Expense[]> => {
   }
 };
 
+export const getAllExpensesByYearAndMonth = async (month:number,year:number): Promise<Expense[]> => {
+  try {
+    //i use query params to get the year and month
+    const response = await myAxios.get<Expense[]>(`/expenses/`, {
+      params: {
+        year:year,
+        month: month
+      }
+    });
+    response.data.map((e) => {
+      e.dataCriacao = new Date(e.dataCriacao);
+    })
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export const getAllTotalExpensesByYear = async (
   year: number
 ): Promise<ExpenseTotalMonth[]> => {
@@ -28,10 +46,28 @@ export const getAllTotalExpensesByYear = async (
     throw err;
   }
 };
-
-export const getTotalExpenseByYearAndMonth = async (id:string):Promise<ExpenseTotalMonth> => {
+  
+export const getExpensesAtMonthByCategory = async (category: string,year:number,month:number) => {
   try {
-    const response = await myAxios.get<ExpenseTotalMonth>(`/expenses/total/${id}`);
+    const response = await myAxios.get<Expense[]>(`/expenses/category/${category}`, {
+      params: {
+        year: year,
+        month: month
+      }
+    });
+    response.data.map((e) => {
+      e.dataCriacao = new Date(e.dataCriacao);
+    })
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+
+}
+
+export const getTotalExpenseAtYearAndMonth = async (year:number,month:number):Promise<ExpenseTotalMonth> => {
+  try {
+    const response = await myAxios.get<ExpenseTotalMonth>(`/expenses/total-at-month/${year}-${month}`);
     return response.data;
   } catch (err) {
     throw err;
