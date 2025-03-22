@@ -10,7 +10,7 @@ interface Propertie {
     options: {
       text: string;
       value: string;
-    }[];
+    } [];
   };
 }
 

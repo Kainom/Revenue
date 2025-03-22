@@ -8,9 +8,30 @@ import { BallLoading } from "./BallLoading";
 interface Props {
   children: React.ReactNode;
   action: any;
+  msg: string;
+  msgButton: string;
+  classN?: string;
+  classBtn?: string;
+  loading?: LoadingSettings;
 }
 
-export const Form = ({ children, action }: Props): ReactElement => {
+interface LoadingSettings {
+  bg?: string;
+  size?: string; // 1-8
+  fatherClass?: string; // optional className for the father div
+  bgFirstSpan?: string; // optional className for the first span
+  bgSecondSpan?: string;
+}
+
+export const Form = ({
+  children,
+  action,
+  msg,
+  msgButton,
+  classN,
+  classBtn = "w-full ",
+  loading,
+}: Props): ReactElement => {
   const [actionServer, setActionServer, isPending] = useActionState(action, {
     message: "",
     isValid: null,
@@ -21,26 +42,26 @@ export const Form = ({ children, action }: Props): ReactElement => {
   });
 
   useEffect(() => {
-    if (actionServer.isValid ) {
-      sucessToast("Expense registrado com sucesso! 🎉");
+    if (actionServer.isValid) {
+      sucessToast(`${actionServer.message}  🎉`);
     }
     if (actionServer.error.message && !actionServer.isValid) {
-      errorToast("Erro ao registrar expense! 😢");
+      errorToast(`${actionServer.error.message} 😢`);
     }
   }, [actionServer]);
   return (
     <React.Fragment>
       <Toaster />
-      <form action={setActionServer}>
+      <form action={setActionServer} className={` ${classN}`}>
         {children}
         {isPending ? (
-          <BallLoading />
+          <BallLoading bg={loading?.bg} size={loading?.size} />
         ) : (
           <button
             disabled={isPending}
-            className="bg-zinc-50 text-background-primary w-full mt-5 rounded-sm py-1.5 hover:bg-zinc-200 transition-all duration-300"
+            className={`mt-5 rounded-sm py-1.5 hover:bg-zinc-200  bg-zinc-50 text-background-primary transition-all duration-300 ${classBtn}`}
           >
-            Add Expense
+            Add {msgButton}
           </button>
         )}
       </form>

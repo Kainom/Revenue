@@ -16,7 +16,7 @@ const months: Month[] = [
 ];
 
 export const getPossibleMonths = (curentMonth: number): Month[] => {
-    console.log(curentMonth);
-    const possibleMonths = months.filter((month) => month.number <= curentMonth);
+  const possibleMonths = months.filter((month) => month.number <= curentMonth);
+  console.log(possibleMonths);
     return possibleMonths;
 };

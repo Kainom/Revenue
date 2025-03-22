@@ -1,15 +1,17 @@
-import React, { ReactNode } from "react";
+import React, { JSX } from "react";
 
+export const Loading = (): JSX.Element => {
+  return (
+    <React.Fragment>
+      <div className="flex justify-center items-center h-screen">
+        <h1 className={` text-5xl mb-20`}>Loading 
+            <span className={`animate-spin`}>
+              &#8230;
+            </span>
+        </h1>
+      </div>
+    </React.Fragment>
+  );
+};
 
-export default function Loading():ReactNode{
-    return(
-        <React.Fragment>
-            <main className="z-0 relative w-full  h-full">
-		<div>
-		     <h1>Loading....</h1>			
-		</div>
-            </main>
-        </React.Fragment>
-    )
-
-}
+export default Loading;

@@ -1,12 +1,16 @@
 import React from "react";
 import { TotalExpenseMonth } from "@/components/expense/TotalExpenseMonth";
 import { ThreeExpensiveMonth } from "@/components/expense/ThreeExpensiveMonth";
+import { getPossibleMonths } from "@/utils/GetPossibleMonths";
+import { getMonthNumber } from "@/utils/MapMonth";
+import { Month } from "@/types/Month";
+import { notFound } from "next/navigation";
 
-type Month = {
+type MonthParm = {
   params: Promise<{ filter: string }>;
 };
 
-export default async function MonthExpense({ params }: Month) {
+export default async function MonthExpense({ params }: MonthParm) {
   let { filter } = await params;
 
   const current: string = new Date().toLocaleString("en", {
@@ -15,6 +19,14 @@ export default async function MonthExpense({ params }: Month) {
 
   if (!filter) {
     filter = current;
+  } else {
+    const month: Month = {
+      name: filter.toString(),
+      number: getMonthNumber(filter),
+    };
+    if (!getPossibleMonths(new Date().getMonth() + 1).some((monthCheck) => monthCheck.number === month.number)) {
+      notFound();
+    }
   }
 
   return (

@@ -4,8 +4,9 @@ import { InputDate } from "@/components/expense/InputDate";
 import { InputField } from "@/components/Inputs/InputField";
 import React, { ReactElement } from "react";
 import { storeExpense } from "@/services/expense";
-export default function NewExpense(): ReactElement {
+import { ParcelaCheck } from "@/components/expense/ParcelaCheck";
 
+export default function NewExpense(): ReactElement {
   return (
     <React.Fragment>
       <main className="mt-10 flex justify-center  p-4 w-full">
@@ -17,7 +18,7 @@ export default function NewExpense(): ReactElement {
             <p className="text-sm mt-0.5 ">Enter your expense details below</p>
           </article>
           <article className="mt-8 ">
-            <Form action={storeExpense}>
+            <Form msg="Expense" msgButton="Expense" action={storeExpense}>
               <InputField
                 properties={{
                   placeholder: "Enter expense name",
@@ -26,6 +27,18 @@ export default function NewExpense(): ReactElement {
                   name: "nome",
                   label: {
                     text: "Expense Name",
+                    classN: "mb-2  flex text-sm font-bold",
+                  },
+                }}
+              />
+              <InputField
+                properties={{
+                  placeholder: "Enter grove name",
+                  classN: "mb-4 border-border-light py-1.5",
+                  width: "w-full",
+                  name: "grove",
+                  label: {
+                    text: "Grove Name",
                     classN: "mb-2  flex text-sm font-bold",
                   },
                 }}
@@ -56,15 +69,15 @@ export default function NewExpense(): ReactElement {
                   placeholder: "Enter amount",
                   classN: "mb-4 border-border-light py-1.5",
                   width: "w-full",
-                  name:"value",
+                  name: "value",
+                  step:"any",
                   label: {
                     text: "Value",
                     classN: "mb-2  flex text-sm font-bold ",
                   },
-
                 }}
               />
-              
+             <ParcelaCheck/>
             </Form>
           </article>
         </section>

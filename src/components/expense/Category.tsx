@@ -20,13 +20,13 @@ export const CategoryExpense = (): ReactElement => {
     month: "long",
   });
 
-  let monthUrl = path.split("/")[2];
+  let monthUrl = path.split("/")[3];
   if (!monthUrl) monthUrl = currentMonth;
 
   function handleLoadingTime() {
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 1000);
   }
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 export interface Revenue {
-    id: string;
+    id?: string;
     nome: string;
     investimento: number;
     rendimento: number;
@@ -7,7 +7,7 @@ export interface Revenue {
     vencimento: Date;
     liquidez: string;
     instituition: string;
-    slug:string,
+    slug?:string,
     stats: boolean;
     tipo:string;
     carencia:Date;

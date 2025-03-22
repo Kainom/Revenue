@@ -8,6 +8,7 @@ interface Propertie {
     classN?: string;
     id?: string;
     name?: string;
+    step?: string;
     label?: {
       text: string;
       classN?: string;
@@ -22,6 +23,8 @@ function padrao({ properties }: Propertie) {
   if (!properties.type) properties.type = "text";
 
   if (!properties.width) properties.width = "w-3/4";
+
+  if (!properties.step) properties.step = "";
 }
 export const InputField = ({ properties }: Propertie): ReactElement => {
   padrao({ properties });
@@ -30,8 +33,7 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
     "border-sm border-border-dark py-1 px-4 rounded-sm text-zinc-50 bg-background-secondary outline-none mt-2";
   let customLabel: string = "mb-4";
 
-  if (properties.label)
-    customLabel += ` ${properties.label.classN}`;
+  if (properties.label) customLabel += ` ${properties.label.classN}`;
 
   classCustom += ` ${properties.classN}`;
   return (
@@ -45,6 +47,7 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
       )}
       <input
         className={`${classCustom} ${properties.width}`}
+        step={`${properties.step}`}
         type={properties.type}
         placeholder={properties.placeholder}
         id={properties.id}

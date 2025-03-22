@@ -12,12 +12,12 @@ const routes: Menu[] = [
       {
         name: "New Expense",
         icon: <Plus className="" width={16} />,
-        subRota: "/new-expense",
+        subRota: "/expense/new-expense",
       },
       {
         name: "My Expenses",
         icon: <Wallet width={16} />,
-        subRota: "/archive",
+        subRota: "/expense/archive",
       },
     ],
   },
@@ -40,7 +40,7 @@ const routes: Menu[] = [
   {
     name: "Perfil",
     icon: <User />,
-    rota: "perfil",
+    rota: "/perfil",
   },
   {
     name: "Calc",
@@ -63,15 +63,11 @@ export const SideBar = () => {
   };
 
   const handleSubMenuEnter = (menu: string) => {
-    new Promise((resolve) => setTimeout(resolve, 60)).then(() => {
       setSubMenuOpen(menu);
-    });
   };
 
   const handleSubMenuLeave = () => {
-    new Promise((resolve) => setTimeout(resolve, 60)).then(() => {
       setSubMenuOpen(false);
-    });
   };
 
   return (
@@ -88,8 +84,9 @@ export const SideBar = () => {
           <li
             key={route.name}
             className={`relative`}
-            onMouseEnter={() => handleSubMenuEnter(route.name)}
+            onClick={() => handleSubMenuEnter(route.name)}
             onMouseLeave={handleSubMenuLeave}
+            
           >
             {route.rota && ( // if exists route.rota then don't exist the subMenu propertys.This is a way to check if the route is a link or a subMenu
               <Link

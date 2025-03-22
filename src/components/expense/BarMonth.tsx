@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllTotalExpensesByYear } from "@/services/expense";
+import { getAllTotalExpensesByYearOrUntilCurrentMonth } from "@/services/expense";
 import { ExpenseTotalMonth, Gasto } from "@/types/Expense";
 import { ordene } from "@/utils/MonthLogics";
 import { usePathname } from "next/navigation";
@@ -21,9 +21,11 @@ export default function BarCharMonth() {
 
   useEffect(() => {
     async function getAll() {
-      const months: ExpenseTotalMonth[] = await getAllTotalExpensesByYear(
-        new Date().getFullYear()
-      );
+      const months: ExpenseTotalMonth[] =
+        await getAllTotalExpensesByYearOrUntilCurrentMonth(
+          new Date().getFullYear(),
+          new Date().getMonth() + 1
+        );
       const gastos: Gasto[] = ordene(months);
       setGastos(gastos);
       console.log(gastos);

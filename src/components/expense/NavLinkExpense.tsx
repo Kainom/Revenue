@@ -24,7 +24,7 @@ export const NavLinkExpense = (): ReactElement => {
       {months.map((month) => (
         <li key={month.number}>
           <Link
-            href={`/archive/${month.name}`}
+            href={`/expense/archive/${month.name}`}
             className={`
                             ${
                               path.endsWith(month.name)
