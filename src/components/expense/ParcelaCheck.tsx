@@ -1,9 +1,11 @@
 "use client";
 import React, { ReactElement } from "react";
 import { InputField } from "../Inputs/InputField";
+import { Expense } from "@/types/Expense";
 
-export const ParcelaCheck = (): ReactElement => {
-  const [checked, setChecked] = React.useState(false);
+export const ParcelaCheck = ({ expense }: {expense:Expense | undefined }): ReactElement => {
+  
+  const [checked, setChecked] = React.useState(expense?.parcela ? true : false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
@@ -31,6 +33,7 @@ export const ParcelaCheck = (): ReactElement => {
             classN: "mb-4 border-border-light py-1.5",
             width: "w-full",
             name: "quantidadeDeParcela",
+            value: expense ? expense.parcela?.quantidadeDeParcela : "",
             label: {
               text: "Quantity",
               classN: "mb-2   flex text-sm font-bold ",

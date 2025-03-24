@@ -4,7 +4,7 @@ import myAxios from "../../lib/axios";
 import slugify from "slugify";
 import { parseISO } from "date-fns";
 import { revalidatePath } from "next/cache";
-import { Message } from "@/types/Message";
+import { State } from "@/types/Message";
 
 export const getRevenues = async (): Promise<Revenue[]> => {
   try {
@@ -46,9 +46,9 @@ export const deleteRevenue = async (
 };
 
 export const createRevenue = async (
-  prevSate: Message,
+  prevSate: State,
   form: FormData
-): Promise<Message> => {
+): Promise<State> => {
   try {
     const revenue: Revenue = {
       nome: form.get("name") as string,

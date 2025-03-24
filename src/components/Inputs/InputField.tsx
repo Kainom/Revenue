@@ -1,3 +1,4 @@
+"use client";
 import React, { Children, ReactElement, ReactNode } from "react";
 
 interface Propertie {
@@ -8,6 +9,7 @@ interface Propertie {
     classN?: string;
     id?: string;
     name?: string;
+    value?: string;
     step?: string;
     label?: {
       text: string;
@@ -29,6 +31,7 @@ function padrao({ properties }: Propertie) {
 export const InputField = ({ properties }: Propertie): ReactElement => {
   padrao({ properties });
 
+  const [value, setValue] = React.useState<string | number >(properties.value as string | number); 
   let classCustom: string =
     "border-sm border-border-dark py-1 px-4 rounded-sm text-zinc-50 bg-background-secondary outline-none mt-2";
   let customLabel: string = "mb-4";
@@ -36,6 +39,11 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
   if (properties.label) customLabel += ` ${properties.label.classN}`;
 
   classCustom += ` ${properties.classN}`;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className="flex flex-col">
       {properties.label && (
@@ -52,6 +60,8 @@ export const InputField = ({ properties }: Propertie): ReactElement => {
         placeholder={properties.placeholder}
         id={properties.id}
         name={properties.name}
+        onChange={handleChange}
+        value={value}
         required
       ></input>
     </div>

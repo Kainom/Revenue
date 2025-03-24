@@ -1,12 +1,13 @@
 "use client";
 
 import { deleteRevenue } from "@/services/api";
-import { Edit2, Pencil, Trash2 } from "lucide-react";
+import { Edit2,Pencil, Trash2 } from "lucide-react";
 import { errorToast, sucessToast } from "../custom/Toast";
 import { useState } from "react";
 import { BallLoading } from "../custom/BallLoading";
 import { deleteExpense } from "@/services/expense";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export const ButtonsExpense = ({ id }: { id: string | undefined }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -24,7 +25,7 @@ export const ButtonsExpense = ({ id }: { id: string | undefined }) => {
     }
   };
   return (
-    <div className="flex gap-4 ">
+    <div className="flex gap-2 items-center">
       <button>
         <Trash2
           onClick={handleDelete}
@@ -32,12 +33,12 @@ export const ButtonsExpense = ({ id }: { id: string | undefined }) => {
           width={18}
         />
       </button>
-      <button>
+      <Link href={`/expense/new-expense/${id}`}>
         <Edit2
           className="hover:text-blue-600 duration-300 transition-all"
           width={18}
         />
-      </button>
+      </Link>
     </div>
   );
 };

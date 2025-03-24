@@ -4,8 +4,9 @@ import myAxios from "../../lib/axios";
 import slugify from "slugify";
 import { Parcela } from "@/types/Parcela";
 import { parseISO } from "date-fns";
-import { Message } from "@/types/Message";
+import { State } from "@/types/Message";
 import { revalidatePath } from "next/cache";
+import { Router } from "lucide-react";
 
 export const allExpensesByYear = async (id: string): Promise<Expense[]> => {
   try {
@@ -128,15 +129,27 @@ export const getExpense = async (slug: string): Promise<Expense> => {
   }
 };
 
+export const getExpenseById = async (id: string): Promise<Expense> => {
+  try {
+    const response = await myAxios.get<Expense>(`/expenses/${id}`);
+    response.data.paymentDay = parseISO(response.data.paymentDay.toString());
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const storeExpense = async (
-  prevSate: Message,
+  prevSate: State,
   form: FormData
-): Promise<Message> => {
+): Promise<State> => {
   try {
     const quantidadeDeParcela = form.get("quantidadeDeParcela") as string;
 
-    const parcela: Parcela | null  = quantidadeDeParcela ? { quantidadeDeParcela } : null;
-   
+    const parcela: Parcela | null = quantidadeDeParcela
+      ? { quantidadeDeParcela }
+      : null;
+
     const expense: Expense = {
       nome: form.get("nome") as string,
       value: parseFloat(form.get("value") as string),
@@ -155,7 +168,7 @@ export const storeExpense = async (
       isValid: true,
       message: "Expense registrado com sucesso!",
       error: { message: "", status: null },
-    } ;
+    };
   } catch (err) {
     prevSate.isValid = false;
     prevSate.message = "";
@@ -164,14 +177,57 @@ export const storeExpense = async (
   }
 };
 
-export const deleteExpense = async (id: string  | undefined):Promise<number> => {
+export const updateExpense = async (
+  prevState: State,
+  form: FormData,
+): Promise<State> => {
+  console.log(prevState.id);
   try {
-  revalidatePath("/expense/archive");
+    const quantidadeDeParcela = form.get("quantidadeDeParcela") as string;
+
+    const parcela: Parcela | null = quantidadeDeParcela
+      ? { quantidadeDeParcela }
+      : null;
+
+    const expense: Expense = {
+      nome: form.get("nome") as string,
+      value: parseFloat(form.get("value") as string),
+      category: form.get("category") as string,
+      paymentDay: new Date(form.get("dataCriacao") as string),
+      description: form.get("description") as string,
+      slug: slugify(form.get("nome") as string, { lower: true }),
+      grove: form.get("grove") as string,
+      parcela: parcela,
+    };
+    console.log(expense);
+    const response = await myAxios.put<Expense>(`/expenses/${prevState.id}`, expense);
+    new Promise((resolve) => setTimeout(resolve, 1000));
+
+    console.log(response.data);
+    return {
+      isValid: true,
+      message: "Expense atualizado com sucesso!",
+      error: { message: "", status: null },
+      id: response.data.id,
+    };
+  } catch (err) {
+    prevState.isValid = false;
+    prevState.message = "";
+    prevState.error.message = `Erro ao atualizar expense`;
+    prevState.error.status = 404;
+    return prevState;
+  }
+ 
+};
+export const deleteExpense = async (
+  id: string | undefined
+): Promise<number> => {
+  try {
+    revalidatePath("/expense/archive");
     await myAxios.delete(`/expenses/${id}`);
     await new Promise((resolve) => setTimeout(resolve, 250));
     return 200;
   } catch (err) {
     return 404;
   }
-
-}
+};
