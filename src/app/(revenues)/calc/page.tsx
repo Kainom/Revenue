@@ -6,7 +6,9 @@ import Calendar from "@/assets/calendar.svg";
 import ArrowUp from "@/assets/trending-up.svg";
 import Calc from "@/assets/calc.svg";
 import Image from "next/image";
-export default function CalcPage(): ReactElement {
+export default async function CalcPage(): Promise<ReactElement> {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   return (
     <React.Fragment>
       <main className="flex ml-16  flex-col">

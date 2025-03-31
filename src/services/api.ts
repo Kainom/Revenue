@@ -12,7 +12,8 @@ export const getRevenues = async (): Promise<Revenue[]> => {
     response.data.map((e) => {
       e.vencimento = new Date(e.vencimento);
     });
-   
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     return response.data;
   } catch (err) {
     return [];
@@ -26,6 +27,7 @@ export const getRevenue = async (slug: string): Promise<Revenue | null> => {
     response.data.carencia = parseISO(response.data.carencia.toString());
     response.data.dataCriacao = parseISO(response.data.dataCriacao.toString());
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
     return response.data;
   } catch (err) {
     return null;

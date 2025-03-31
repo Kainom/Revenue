@@ -5,7 +5,7 @@ import { createRevenue } from "@/services/api";
 import React, { ReactElement } from "react";
 
 export default async function NewRevenue(): Promise<ReactElement> {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   return (
     <React.Fragment>

@@ -17,6 +17,8 @@ type Slug = {
 export default async function RevenuePage({
   params,
 }: Slug): Promise<ReactElement> {
+
+
   const zero = (day: number): string => {
     return `${day > 10 ? day : "0" + day}`;
   };
