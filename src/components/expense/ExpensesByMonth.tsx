@@ -1,3 +1,4 @@
+
 import { Expense } from "@/types/Expense";
 import React, { ReactElement } from "react";
 import { ButtonsExpense } from "./ButtonExpense";
@@ -5,9 +6,15 @@ import Link from "next/link";
 
 interface Props {
   expenses: Expense[];
+  total: number;
+  onDeleteExpense: () => void;
 }
 
-export const ExpensesByMonth = ({ expenses }: Props): ReactElement => {
+export const ExpensesByMonth = ({
+  expenses,
+  total,
+  onDeleteExpense,
+}: Props): ReactElement => {
   return (
     <React.Fragment>
       {expenses.map((expense) => (
@@ -17,14 +24,14 @@ export const ExpensesByMonth = ({ expenses }: Props): ReactElement => {
         >
           <Link href={`/expense/${expense.slug}`}>
             <span className="flex justify-between">
-              <p className="text-sm overflow-hidden hover:text-red-600 transition-all duration-300  ">
-                {expense.nome}
+              <p className="text-sm hover:text-red-600 transition-all duration-300 truncate w-[45ch] ">
+                <span className="">{expense.nome}</span>
                 {expense.parcela && (
                   <span>/{expense.parcela.quantidadeDeParcela}</span>
                 )}
               </p>
 
-              <p className="text-sm text-red-600"> -${expense.value}</p>
+              <p className="text-sm text-red-600 "> -${expense.value}</p>
             </span>
           </Link>
 
@@ -38,10 +45,22 @@ export const ExpensesByMonth = ({ expenses }: Props): ReactElement => {
                 {expense.category}
               </p>
             </span>
-            <ButtonsExpense id={expense.id} />
+            <ButtonsExpense id={expense.id} onDeleteExpense={onDeleteExpense} />
           </div>
         </div>
       ))}
+      <div className={`flex justify-center p-2 rounded-sm m-4 ${expenses.length === 1 ? "":""}` }>
+        <p className="text-lg gap-2 flex text-red-600 ">
+          Total:
+          <span>
+            -
+            {total.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </span>
+        </p>
+      </div>
     </React.Fragment>
   );
 };

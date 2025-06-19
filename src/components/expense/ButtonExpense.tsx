@@ -8,7 +8,13 @@ import { BallLoading } from "../custom/BallLoading";
 import { deleteExpense } from "@/services/expense";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-export const ButtonsExpense = ({ id }: { id: string | undefined }) => {
+
+interface ButtonsExpenseProps {
+  id: string | undefined; // O ID da despesa a ser excluída
+  onDeleteExpense: () => void; // A função de callback para o avô
+}
+
+export const ButtonsExpense = ({ id,onDeleteExpense }: ButtonsExpenseProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleDelete = async () => {
@@ -18,6 +24,7 @@ export const ButtonsExpense = ({ id }: { id: string | undefined }) => {
     await new Promise((resolve) => setTimeout(resolve, 250));
     if (response !== 404) {
       sucessToast(`Expense excluído com sucesso!`);
+       onDeleteExpense();
       setLoading(false);
     } else {
       errorToast("Erro ao excluir Expense! Tente novamente mais tarde.");

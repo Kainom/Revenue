@@ -13,6 +13,9 @@ export const CategoryExpense = (): ReactElement => {
   const [category, setCategory] = useState<string>("All");
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [deleteExpense,setDeleteExpense] = useState<boolean>(false);
+  const itemsPerPage = 4;
 
   const path = usePathname();
 
@@ -21,7 +24,10 @@ export const CategoryExpense = (): ReactElement => {
   });
 
   let monthUrl = path.split("/")[3];
-  if (!monthUrl) monthUrl = currentMonth;
+
+  if (!monthUrl) {
+    monthUrl = currentMonth;
+  }
 
   function handleLoadingTime() {
     setTimeout(() => {
@@ -34,7 +40,7 @@ export const CategoryExpense = (): ReactElement => {
       const monthNumber = getMonthNumber(monthUrl);
       if (category === "All") {
         const expenses: Expense[] = await getAllExpensesByYearAndMonth(
-          new Number(monthNumber).valueOf(),
+          Number(monthNumber).valueOf(),
           new Date().getFullYear()
         );
 
@@ -45,19 +51,28 @@ export const CategoryExpense = (): ReactElement => {
         new Date().getFullYear(),
         monthNumber
       );
-      console.log(expenses);
       return expenses;
     };
     handleLoadingTime();
 
     fetchExpenses().then((expenses) => {
       setExpenses(expenses);
+      setCurrentPage(1);
     });
-  }, [category, path]);
+  }, [category, path,deleteExpense]);
+
+  const totalPages = Math.ceil(expenses.length / itemsPerPage);
+  const paginatedExpenses = expenses.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+   const total : number = expenses
+    .reduce((total,item) => total + item.value,0)
 
   return (
     <React.Fragment>
-      <article className="border-sm border-border-dark py-4 px-6 rounded-sm">
+      <article className="border-sm border-border-dark pt-4 pb-0 px-6 rounded-sm grid grid-cols-1 ">
         <div className="flex justify-between mb-4">
           <div className="flex justify-between">
             <span>
@@ -85,7 +100,7 @@ export const CategoryExpense = (): ReactElement => {
             </select>
           </div>
         </div>
-        <div >
+        <div>
           {loading && (
             <BallLoading
               bg={"none"}
@@ -94,9 +109,43 @@ export const CategoryExpense = (): ReactElement => {
               bgSecondSpan="bg-red-500"
             />
           )}
-          {!loading && expenses.length === 0 && <p>No expenses found.</p>}
+          {!loading && expenses.length === 0 && (
+            <p className="text-center text-2xl">No expenses found.</p>
+          )}
           {!loading && expenses.length > 0 && (
-            <ExpensesByMonth expenses={expenses} />
+            <>
+              <ExpensesByMonth
+                expenses={paginatedExpenses}
+                total={total}
+                onDeleteExpense={() => setDeleteExpense((prev) => !prev)}
+              />
+
+              <div
+                className={`flex justify-center gap-4 mt-4 mb-4 items-center ${paginatedExpenses.length === 1 ? "mt-14" : ""}`}
+              >
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="px-3 py-1 bg-zinc-800 text-white rounded disabled:opacity-50"
+                >
+                  Anterior
+                </button>
+                <span className="text-sm text-zinc-400">
+                  Página {currentPage} de {totalPages}
+                </span>
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="px-3 py-1 bg-zinc-800 text-white rounded disabled:opacity-50"
+                >
+                  Próxima
+                </button>
+              </div>
+            </>
           )}
         </div>
       </article>

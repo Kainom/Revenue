@@ -1,5 +1,4 @@
 import BarCharMonth from "@/components/expense/BarMonth";
-import { CardMonth } from "@/components/expense/CardMonth";
 import { CategoryExpense } from "@/components/expense/Category";
 import React, { ReactElement } from "react";
 
@@ -10,14 +9,19 @@ export default function LatestRevenue(): ReactElement {
         <section className="w-10/12 min-[835px]:mx-auto  max-[835px]:w-full  max-[835px]:p-2  ">
           <section className="grid grid-cols-[1fr,0.7fr] max-[598px]:grid-cols-1  gap-5  pb-4">
             <article className="border-sm border-border-dark px-8  pb-8 rounded-sm">
-              <div className="mt-5 mb-8">
-                <strong><p>Yearly Overview</p></strong>
-                <p className="text-xs text-zinc-400">Monthly expense breakdown</p>
+              <div className=" ">
+                <strong>
+                  <p>Yearly Overview</p>
+                </strong>
+                <p className="text-xs text-zinc-400">
+                  Monthly expense breakdown
+                </p>
               </div>
               <BarCharMonth />
             </article>
             <CategoryExpense />
           </section>
+          
         </section>
       </main>
     </React.Fragment>

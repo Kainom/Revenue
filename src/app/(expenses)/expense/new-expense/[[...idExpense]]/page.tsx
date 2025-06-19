@@ -17,6 +17,7 @@ type Props = {
 export default async function NewExpense({
   params,
 }: Props): Promise<ReactElement> {
+
   const { idExpense } = await params;
   let expense: Expense | undefined = undefined;
   if (idExpense) {
@@ -33,12 +34,12 @@ export default async function NewExpense({
         <section className="bg-background-secondary w-2/5 p-6 rounded-sm">
           <article>
             <strong>
-              <p className="text-xl">Add New Expense</p>
+              <p className="text-xl">{`${idExpense ?`Update ${expense?.nome}`:"Add New Expense"}`}</p>
             </strong>
             <p className="text-sm mt-0.5 ">Enter your expense details below</p>
           </article>
           <article className="mt-8 ">
-            <Form msg="Expense" msgButton="Expense" action={idExpense? updateExpense : storeExpense} id={idExpense as string}>
+            <Form msg="Expense" msgButton={idExpense ? `Update Expense`:"Add Expense"} action={idExpense? updateExpense : storeExpense} id={idExpense as string}>
               <InputField
                 properties={{
                   placeholder: "Enter expense name",

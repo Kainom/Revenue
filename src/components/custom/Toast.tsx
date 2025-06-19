@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 export const sucessToast = (message: string) => { 
     toast.success(message, {
-      duration: 2000,
+      duration: 1000,
       position: "top-right", // Posição do toast
       style: {
         background: "#4CAF50", // Cor de fundo personalizada
@@ -18,7 +18,7 @@ export const sucessToast = (message: string) => {
 
 export const errorToast = (message: string) => {
   toast.error(message, {
-    duration: 2000,
+    duration: 1000,
     position: "top-right",
     style: {
       background: "#1F1F23",

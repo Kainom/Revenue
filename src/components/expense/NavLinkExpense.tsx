@@ -27,7 +27,7 @@ export const NavLinkExpense = (): ReactElement => {
             href={`/expense/archive/${month.name}`}
             className={`
                             ${
-                              path.endsWith(month.name)
+                              path.endsWith(month.name) 
                                 ? "bg-background-secondary py-3 px-8   rounded-md transition-all"
                                 : "hover:text-primary-600"
                             }

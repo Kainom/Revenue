@@ -4,13 +4,13 @@ import { useActionState } from "react";
 import { Toaster } from "react-hot-toast";
 import { errorToast, sucessToast } from "./Toast";
 import { BallLoading } from "./BallLoading";
-import {useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface Props {
   children: React.ReactNode;
   action: any;
   msg: string;
-  msgButton: string;
+  msgButton?: string;
   classN?: string;
   classBtn?: string;
   loading?: LoadingSettings;
@@ -29,16 +29,16 @@ export const Form = ({
   children,
   action,
   msg,
-  msgButton,
+  msgButton = "Add Expense",
   classN,
   classBtn = "w-full ",
   loading,
   id,
 }: Props): ReactElement => {
   const router = useRouter();
-  
-  
+
   const [idEx, setIdEx] = useState<string | undefined>(id); // Inicia com o id vindo das props
+  const [pending, setPending] = useState(false);
   const [actionServer, setActionServer, isPending] = useActionState(action, {
     message: "",
     isValid: null,
@@ -46,34 +46,43 @@ export const Form = ({
       message: "",
       status: 0,
     },
-    id: idEx
+    id: idEx,
   });
 
-  
-  
   useEffect(() => {
-    if (actionServer.isValid) {
-      sucessToast(`${actionServer.message}  🎉`);
-      setIdEx(actionServer.id);
-      router.push(`/expense/archive`);
-    }
-    if (actionServer.error.message && !actionServer.isValid) {
-      errorToast(`${actionServer.error.message} 😢`);
-    }
-  }, [actionServer]); 
+    const redirectAndToast = async (): Promise<void> => {
+      // se nao houver action de nao gera loading
+      // evita loading quando o form é renderizado
+      if (actionServer.isValid != null) setPending(true);
+
+      if (actionServer.isValid) {
+        sucessToast(`${actionServer.message}  🎉`);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setIdEx(actionServer.id);
+        router.push(`/expense/archive`);
+        
+      }
+      if (actionServer.error.message && !actionServer.isValid) {
+        errorToast(`${actionServer.error.message} 😢`);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setPending(false);
+      }
+    };
+    redirectAndToast();
+  }, [actionServer]);
   return (
     <React.Fragment>
       <Toaster />
       <form action={setActionServer} className={` ${classN}`}>
         {children}
-        {isPending ? (
+        {pending ? (
           <BallLoading bg={loading?.bg} size={loading?.size} />
         ) : (
           <button
             disabled={isPending}
             className={`mt-5 rounded-sm py-1.5 hover:bg-zinc-200  bg-zinc-50 text-background-primary transition-all duration-300 ${classBtn}`}
           >
-            Add {msgButton}
+            {msgButton}
           </button>
         )}
       </form>

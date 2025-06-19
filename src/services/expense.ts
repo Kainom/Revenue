@@ -133,11 +133,26 @@ export const getExpenseById = async (id: string): Promise<Expense> => {
   try {
     const response = await myAxios.get<Expense>(`/expenses/${id}`);
     response.data.paymentDay = parseISO(response.data.paymentDay.toString());
+    
+    await new Promise((resolve) => setTimeout(resolve, 500));
     return response.data;
   } catch (err) {
     throw err;
   }
 };
+
+export const getTotalAmountInYear = async():Promise<number> => {
+    try {
+      const currentYear:number = new Date().getFullYear();
+      const response = await myAxios.get<number>(`/expenses/total-amount/${currentYear}`)
+
+      return response.data;
+
+    } catch(err){
+      return 501
+    }
+};
+
 
 export const storeExpense = async (
   prevSate: State,
@@ -161,9 +176,7 @@ export const storeExpense = async (
       parcela: parcela,
     };
     const response = await myAxios.post<Expense>("/expenses/", expense);
-    new Promise((resolve) => setTimeout(resolve, 1000));
 
-    console.log(response.data);
     return {
       isValid: true,
       message: "Expense registrado com sucesso!",
@@ -199,11 +212,7 @@ export const updateExpense = async (
       grove: form.get("grove") as string,
       parcela: parcela,
     };
-    console.log(expense);
     const response = await myAxios.put<Expense>(`/expenses/${prevState.id}`, expense);
-    new Promise((resolve) => setTimeout(resolve, 1000));
-
-    console.log(response.data);
     return {
       isValid: true,
       message: "Expense atualizado com sucesso!",
@@ -231,3 +240,4 @@ export const deleteExpense = async (
     return 404;
   }
 };
+

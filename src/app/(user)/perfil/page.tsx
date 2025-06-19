@@ -12,7 +12,10 @@ import UpArrow from "@/assets/trending-up.svg";
 import { Dollar } from "@/components/custom/svg/Dollar";
 import { ExpensesDivision, MoneyProgress } from "@/components/MoneyProgress";
 
-export default function Perfil(): ReactElement {
+export default async function Perfil(): Promise<ReactElement> {
+  // const { user } = await getUser();
+    await new Promise((resolve) => setTimeout(resolve, 500)); 
+
   return (
     <React.Fragment>
       <section className="flex flex-col items-center mt-0 p-3  pt-10">
