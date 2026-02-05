@@ -50,7 +50,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
           }}
         ></InputField>
         {login && (
-          <p className="text-xs text-primary-600 cursor-pointer hover:text-primary-700 transition-all duration-300 w-full mx-auto  text-end my-3">
+          <p className="text-xs my-5 text-primary-600 cursor-pointer hover:text-primary-700 transition-all duration-300 w-full mx-auto  text-end">
             Esqueceu sua Senha?
           </p>
         )}
@@ -60,7 +60,7 @@ export const GroupFields: FC<Group> = ({ login, children }): ReactElement => {
             login ? "" : " mt-10 "
           }bg-primary-600 py-1.5 rounded-sm hover:bg-primary-700 transition-all duration-300 w-full mx-auto`}
         >
-          {login ? "Entrar" : "Cadastrar"} {"->"}
+          {login ? "Entrar" : "Cadastrar"}
         </button>
       </form>
     </React.Fragment>
