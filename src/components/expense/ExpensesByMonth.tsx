@@ -12,7 +12,6 @@ interface Props {
 
 export const ExpensesByMonth = ({
   expenses,
-  total,
   onDeleteExpense,
 }: Props): ReactElement => {
   return (
@@ -49,18 +48,7 @@ export const ExpensesByMonth = ({
           </div>
         </div>
       ))}
-      <div className={`flex justify-center p-2 rounded-sm m-4 ${expenses.length === 1 ? "":""}` }>
-        <p className="text-lg gap-2 flex text-red-600 ">
-          Total:
-          <span>
-            -
-            {total.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </span>
-        </p>
-      </div>
+     
     </React.Fragment>
   );
 };

@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 
 export const Footer = (): ReactElement => {
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-background-secondary border-t border-zinc-800">
+<footer className="relative w-full bg-background-secondary border-t border-zinc-800">
 
       {/* Onda */}
       <div className="absolute -top-[59px] left-0 w-full leading-none">
@@ -28,7 +28,7 @@ export const Footer = (): ReactElement => {
       </div>
 
       {/* Conteúdo */}
-      <div className="py-6">
+      <div className="py-2 bg-background-dark_purple pb-4">
         <p className="text-center text-xs">
           Copyright © 2024 Kainom. Todos os direitos reservados.
         </p>

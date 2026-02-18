@@ -6,6 +6,7 @@ import { SideBar } from "@/components/SideBar";
 import { Home, Settings, User } from "lucide-react";
 import { CustomLink, MinemizeHeader } from "@/components/MinemizeHeader";
 import { Footer } from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="grid place-items-center  px-2 py-4 mt-2">
-          <div className="w-full max-w-md">{children}</div>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
+        <div className="min-h-screen flex flex-col">
+          {/* Conteúdo principal */}
+          <main className="flex-1 flex items-center justify-center px-2">
+            <div className="w-full max-w-md">{children}</div>
+          </main>
+
+          {/* Footer */}
+          <Footer />
         </div>
-        <Footer></Footer>
       </body>
     </html>
   );

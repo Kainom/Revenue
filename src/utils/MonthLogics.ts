@@ -1,23 +1,22 @@
 import { ExpenseTotalMonth, Gasto } from "@/types/Expense";
 
-const data: Gasto[] = [
-  { mes: "Jan", total: 0 },
-  { mes: "Fev", total: 0 },
-  { mes: "Mar", total: 0 },
-  { mes: "Apr", total: 0 },
-  { mes: "May", total: 0 },
-  { mes: "Jun", total: 0 },
-  { mes: "Jul", total: 0 },
-  { mes: "Aug", total: 0 },
-  { mes: "Set", total: 0 },
-  { mes: "Oct", total: 0 },
-  { mes: "Nov", total: 0 },
-  { mes: "Dez", total: 0 },
+const monthNames = [
+  "Jan", "Fev", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Set", "Oct", "Nov", "Dez"
 ];
+
 export const ordene = (expenses: ExpenseTotalMonth[]): Gasto[] => {
-  const expensesOrdenados = expenses.sort((a, b) => a.id.localeCompare(b.id));
-  return data.map((expense, index) => ({
-    ...expense,
-    total: expensesOrdenados[index]?.total || 0,
+  // Cria um mapa de mês (número) -> total
+  const expenseMap = new Map<number, number>();
+  expenses.forEach(expense => {
+    // Assumindo que expense.id é algo como "2026-01", "2026-02", etc.
+    const monthNumber = parseInt(expense.id.split('-')[1]) - 1; // 0-indexed
+    expenseMap.set(monthNumber, expense.total);
+  });
+
+  // Gera o array completo de 12 meses
+  return monthNames.map((monthName, index) => ({
+    mes: monthName,
+    total: expenseMap.get(index) || 0
   }));
 };

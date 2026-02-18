@@ -1,10 +1,8 @@
 "use client";
 
-import { deleteRevenue } from "@/services/api";
-import { Edit2,Pencil, Trash2 } from "lucide-react";
+import { Edit2, Pencil, Trash2 } from "lucide-react";
 import { errorToast, sucessToast } from "../custom/Toast";
 import { useState } from "react";
-import { BallLoading } from "../custom/BallLoading";
 import { deleteExpense } from "@/services/expense";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -14,23 +12,31 @@ interface ButtonsExpenseProps {
   onDeleteExpense: () => void; // A função de callback para o avô
 }
 
-export const ButtonsExpense = ({ id,onDeleteExpense }: ButtonsExpenseProps) => {
+export const ButtonsExpense = ({
+  id,
+  onDeleteExpense,
+}: ButtonsExpenseProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleDelete = async () => {
     setLoading(true);
+
     const response = await deleteExpense(id);
-      router.refresh();
-    await new Promise((resolve) => setTimeout(resolve, 250));
+
     if (response !== 404) {
-      sucessToast(`Expense excluído com sucesso!`);
-       onDeleteExpense();
-      setLoading(false);
+      sucessToast("Expense excluído com sucesso!");
+
+      // pequeno delay só para UX (opcional)
+      await new Promise((r) => setTimeout(r, 300));
+
+      onDeleteExpense(); // força refetch
     } else {
-      errorToast("Erro ao excluir Expense! Tente novamente mais tarde.");
-      setLoading(false);
+      errorToast("Erro ao excluir Expense! Tente novamente.");
     }
+
+    setLoading(false);
   };
+
   return (
     <div className="flex gap-2 items-center">
       <button>

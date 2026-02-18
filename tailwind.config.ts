@@ -45,6 +45,7 @@ export default {
           secondary: "#1F1F23", // Slightly lighter background
           tertiary: "#1A2036", // Surface color
           elevated: "#252D4A", // Elevated surface color
+          dark_purple: "rgb(24 24 37)"
         },
         accent: {
           blue: {

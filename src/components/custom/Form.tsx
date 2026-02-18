@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { errorToast, sucessToast } from "./Toast";
 import { BallLoading } from "./BallLoading";
 import { useRouter } from "next/navigation";
+import { SmoothLoading } from "./SmoothLoading";
 
 interface Props {
   children: React.ReactNode;
@@ -60,7 +61,6 @@ export const Form = ({
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setIdEx(actionServer.id);
         router.push(`/expense/archive`);
-        
       }
       if (actionServer.error.message && !actionServer.isValid) {
         errorToast(`${actionServer.error.message} 😢`);
@@ -76,9 +76,10 @@ export const Form = ({
       <form action={setActionServer} className={` ${classN}`}>
         {children}
         {pending ? (
-          <BallLoading bg={loading?.bg} size={loading?.size} />
+          <SmoothLoading variant="fade" size="md" color="blue" />
         ) : (
           <button
+            type="submit"
             disabled={isPending}
             className={`mt-5 rounded-sm py-1.5 hover:bg-zinc-200  bg-zinc-50 text-background-primary transition-all duration-300 ${classBtn}`}
           >

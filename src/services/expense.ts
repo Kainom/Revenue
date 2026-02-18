@@ -159,6 +159,7 @@ export const storeExpense = async (
   form: FormData
 ): Promise<State> => {
   try {
+    console.log("Hello world")
     const quantidadeDeParcela = form.get("quantidadeDeParcela") as string;
 
     const parcela: Parcela | null = quantidadeDeParcela
